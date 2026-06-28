@@ -44,7 +44,7 @@ const totalCount = allMedia.length;
                 playsinline
               />
               <span class="gitem-play-icon" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
               </span>
             </div>
           )}
@@ -53,14 +53,15 @@ const totalCount = allMedia.length;
     </div>
 
     {totalCount > 1 && (
-      <div class="gallery-nav" data-nav={projectId}>
+      <div class="gallery-nav">
         {allMedia.map((_, i) => (
           <button
-            class="gnav-dot"
+            class={`gnav-dot${i === 0 ? ' active' : ''}`}
             data-dot={projectId}
-            data-dot-idx={i}
+            data-dot-index={i}
             type="button"
-            aria-label={`Element ${i + 1}`}
+            aria-label={`Bild ${i + 1} von ${totalCount}`}
+            aria-current={i === 0 ? 'true' : 'false'}
           />
         ))}
       </div>
@@ -69,12 +70,12 @@ const totalCount = allMedia.length;
   </div>
 )}
 
-<!-- Lightbox -->
+<!-- Lightbox — rendered once per gallery, position:fixed overlay -->
 {hasMedia && (
   <div class="lb" id={`lb-${projectId}`} hidden>
     <div class="lb-bg" data-lb-bg={projectId}></div>
     <button class="lb-x" data-lb-x={projectId} type="button" aria-label="Schließen">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <line x1="18" y1="6" x2="6" y2="18"/>
         <line x1="6" y1="6" x2="18" y2="18"/>
       </svg>
@@ -86,205 +87,6 @@ const totalCount = allMedia.length;
   </div>
 )}
 
-<style>
-/* ── Gallery wrapper ── */
-.gallery-outer {
-  margin-top: 40px;
-  padding-bottom: clamp(28px, 4vw, 48px);
-  overflow: hidden;
-}
-
-/* ── Scroll track ── */
-.gallery-track {
-  display: flex;
-  align-items: stretch;
-  gap: 10px;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  padding-inline: calc((100% - min(58vw, 680px)) / 2);
-}
-.gallery-track::-webkit-scrollbar { display: none; }
-
-/* ── Items — etwas kleiner als vorher ── */
-.gitem {
-  flex-shrink: 0;
-  width: min(58vw, 680px);
-  height: clamp(160px, 32vw, 400px);
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--bg-subtle);
-  cursor: pointer;
-  scroll-snap-align: center;
-  position: relative;
-  outline: none;
-  transition: opacity 0.2s;
-}
-.gitem:hover { opacity: 0.88; }
-.gitem:focus-visible { outline: 2px solid var(--ink-1, #111); outline-offset: 3px; }
-
-.gitem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-  user-select: none;
-}
-
-.gitem-video-wrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.gitem-video-wrap video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-}
-.gitem-play-icon {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.22);
-}
-/* Play-Icon Kreis */
-.gitem-play-icon::before {
-  content: "";
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.18);
-  border: 1.5px solid rgba(255,255,255,0.5);
-}
-.gitem-play-icon svg {
-  position: relative;
-  z-index: 1;
-  margin-left: 3px;
-}
-
-/* ── Nav — Punktlinie, zentriert ── */
-.gallery-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding-top: 16px;
-}
-
-.gnav-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  border: none;
-  background: var(--ink-3, #aaa);
-  cursor: pointer;
-  padding: 0;
-  transition: background 0.2s, transform 0.2s;
-  flex-shrink: 0;
-}
-.gnav-dot[data-active] {
-  background: var(--ink-1, #111);
-  transform: scale(1.5);
-}
-.gnav-dot:focus-visible {
-  outline: 2px solid var(--ink-1, #111);
-  outline-offset: 2px;
-}
-
-/* ── Lightbox ── */
-.lb {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.lb[hidden] { display: none !important; }
-
-.lb-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  cursor: pointer;
-}
-
-/* Close — reduziert, zur Bewerbung passend */
-.lb-x {
-  position: fixed;
-  top: 20px;
-  right: 24px;
-  z-index: 2;
-  width: 40px;
-  height: 40px;
-  border-radius: 2px;
-  border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(0,0,0,0.35);
-  color: rgba(255,255,255,0.9);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s, border-color 0.15s;
-  letter-spacing: 0.05em;
-}
-.lb-x:hover { background: rgba(0,0,0,0.6); border-color: rgba(255,255,255,0.7); }
-.lb-x:focus-visible { outline: 2px solid white; outline-offset: 3px; }
-
-/* Content frame */
-.lb-center {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: min(96vw, 1400px);
-  max-height: 94vh;
-  pointer-events: none;
-}
-
-/* Lightbox-Bild — größer als zuvor */
-.lb-img {
-  display: block;
-  max-width: min(94vw, 1360px);
-  max-height: 92vh;
-  border-radius: 2px;
-  object-fit: contain;
-  pointer-events: none;
-}
-.lb-vid {
-  display: block;
-  max-width: min(94vw, 1360px);
-  max-height: 92vh;
-  border-radius: 2px;
-  background: #000;
-  pointer-events: auto;
-}
-
-.lb-img[data-hide], .lb-vid[data-hide] { display: none; }
-
-@media (max-width: 640px) {
-  .gitem { width: 80vw; height: clamp(140px, 48vw, 280px); }
-  .lb-x { top: 12px; right: 12px; width: 36px; height: 36px; }
-}
-</style>
-
 <script>
 (function () {
   document.querySelectorAll<HTMLElement>('.gallery-track').forEach(track => {
@@ -292,7 +94,7 @@ const totalCount = allMedia.length;
     const total     = parseInt(track.dataset.total || '1');
     const items     = Array.from(track.querySelectorAll<HTMLElement>('.gitem'));
 
-    const dots  = Array.from(document.querySelectorAll<HTMLButtonElement>(`[data-dot="${galleryId}"]`));
+    const dots = Array.from(document.querySelectorAll<HTMLButtonElement>(`[data-dot="${galleryId}"]`));
 
     const lb    = document.getElementById(`lb-${galleryId}`)!;
     const lbBg  = lb.querySelector<HTMLElement>('.lb-bg')!;
@@ -302,18 +104,18 @@ const totalCount = allMedia.length;
 
     let current = 0;
 
-    // ── Scroll to item (centred) ──────────────────────────────────────────
     function scrollToIdx(idx: number, instant = false) {
-      const item = items[idx];
+      const item  = items[idx];
       if (!item) return;
-      const left = item.offsetLeft - (track.clientWidth - item.offsetWidth) / 2;
+      const itemW = item.offsetWidth;
+      const left  = item.offsetLeft - (track.clientWidth - itemW) / 2;
       track.scrollTo({ left, behavior: instant ? 'instant' : 'smooth' });
     }
 
     function updateUI() {
-      dots.forEach((d, i) => {
-        if (i === current) d.setAttribute('data-active', '');
-        else d.removeAttribute('data-active');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === current);
+        dot.setAttribute('aria-current', i === current ? 'true' : 'false');
       });
     }
 
@@ -327,7 +129,6 @@ const totalCount = allMedia.length;
       return best;
     }
 
-    // ── Lightbox ──────────────────────────────────────────────────────────
     function openLB(item: HTMLElement) {
       const type = item.dataset.type!;
       const src  = item.dataset.src!;
@@ -363,10 +164,12 @@ const totalCount = allMedia.length;
 
     function closeLB() {
       if (lb.hidden) return;
+
       const scrollY = parseInt(lb.dataset.scrollY || '0');
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       window.scrollTo(0, scrollY);
+
       lb.hidden = true;
       lbVid.pause?.();
       lbVid.removeAttribute('src');
@@ -379,16 +182,6 @@ const totalCount = allMedia.length;
       if (!lb.hidden && e.key === 'Escape') closeLB();
     });
 
-    // ── Dot clicks ────────────────────────────────────────────────────────
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        current = i;
-        scrollToIdx(current);
-        updateUI();
-      });
-    });
-
-    // ── Item clicks ───────────────────────────────────────────────────────
     items.forEach((item, i) => {
       item.addEventListener('click', () => {
         if (i === current) {
@@ -404,7 +197,14 @@ const totalCount = allMedia.length;
       });
     });
 
-    // Sync from native scroll
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        current = i;
+        scrollToIdx(current);
+        updateUI();
+      });
+    });
+
     let tid: ReturnType<typeof setTimeout>;
     track.addEventListener('scroll', () => {
       clearTimeout(tid);
@@ -414,7 +214,6 @@ const totalCount = allMedia.length;
       }, 100);
     }, { passive: true });
 
-    // Touch swipe
     let tx = 0;
     track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
@@ -424,7 +223,6 @@ const totalCount = allMedia.length;
       if (dx > 0 && current > 0)         { current--; scrollToIdx(current); updateUI(); }
     });
 
-    // Init
     updateUI();
     if (document.readyState === 'complete') {
       scrollToIdx(0, true);
@@ -433,13 +231,15 @@ const totalCount = allMedia.length;
     }
     window.addEventListener('resize', () => scrollToIdx(current, true));
 
-    // Erstes Frame aller Carousel-Videos laden
     track.querySelectorAll<HTMLVideoElement>('.gitem-video-wrap video').forEach(vid => {
-      if (vid.readyState >= 1) {
-        vid.currentTime = 0.01;
-      } else {
-        vid.addEventListener('loadedmetadata', () => { vid.currentTime = 0.01; }, { once: true });
-      }
+      const seekToFirstFrame = () => {
+        if (vid.readyState >= 1) {
+          vid.currentTime = 0.01;
+        } else {
+          vid.addEventListener('loadedmetadata', () => { vid.currentTime = 0.01; }, { once: true });
+        }
+      };
+      seekToFirstFrame();
     });
   });
 })();
