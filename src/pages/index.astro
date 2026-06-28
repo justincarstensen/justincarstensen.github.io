@@ -1,17 +1,1333 @@
 ---
+import ProjectCard from "../components/ProjectCard.astro";
 
+const projects = [
+  {
+    id: "clockwork",
+    title: "Clockwork Frontiers",
+    year: "2025",
+    season: "Winter",
+    semester: "5",
+    course: "WWW-Programmierung",
+    description: "Ein Fullstack-Webprojekt mit selbst entwickeltem Backend und integriertem CMS. Fokus auf saubere Architektur, schnelle Ladezeiten und intuitive Content-Verwaltung.",
+    categories: ["Website", "UI"],
+    tools: ["Deno", "JavaScript", "Git"],
+    contributors: ["Max Mustermann"],
+    images: ["/clockworkwebsite/1.png", "/clockworkwebsite/2.png", "/clockworkwebsite/3.png"],
+    videos: ["/clockworkwebsite/demo.mp4"],
+  },
+  {
+    id: "soundmap",
+    title: "SoundMap",
+    year: "2025",
+    season: "Sommer",
+    semester: "5",
+    course: "Mobile Applikationen",
+    description: "Eine interaktive Karte, auf der Nutzer Klangaufnahmen aus ihrer Umgebung teilen können. Standortbasierte Exploration von Sounds weltweit.",
+    categories: ["App", "UX"],
+    tools: ["React Native", "TypeScript", "Mapbox"],
+    contributors: ["Max Mustermann", "Lena Fischer"],
+    images: [],
+    videos: [],
+  },
+  {
+    id: "typeset",
+    title: "Typeset Studio",
+    year: "2024",
+    season: "Winter",
+    semester: "4",
+    course: "Interaktionsdesign",
+    description: "Browser-basierter Typografie-Editor mit Echtzeit-Vorschau. Nutzer können Schriftpaare kombinieren, Abstände kalibrieren und Layouts als CSS exportieren.",
+    categories: ["Tool", "UI"],
+    tools: ["Svelte", "CSS", "TypeScript"],
+    contributors: ["Max Mustermann"],
+    images: [],
+    videos: [],
+  },
+  {
+    id: "archiv",
+    title: "Stadtarchiv Flensburg",
+    year: "2024",
+    season: "Sommer",
+    semester: "4",
+    course: "Informationsdesign",
+    description: "Digitale Aufbereitung des historischen Stadtarchivs. Zeitleiste mit Fotografien, Dokumenten und interaktiven Karten der Stadtentwicklung seit 1200.",
+    categories: ["Website", "Daten"],
+    tools: ["Astro", "D3.js", "Git"],
+    contributors: ["Max Mustermann", "Jonas Klein"],
+    images: [],
+    videos: [],
+  },
+  {
+    id: "fluxform",
+    title: "FluxForm",
+    year: "2024",
+    season: "Winter",
+    semester: "3",
+    course: "Webentwicklung",
+    description: "No-Code Formular-Builder mit Drag-and-Drop-Interface. Formulare werden direkt als statisches HTML exportiert — ohne Abhängigkeiten oder Backend.",
+    categories: ["Tool", "UI"],
+    tools: ["Vue", "JavaScript", "Tailwind"],
+    contributors: ["Max Mustermann"],
+    images: [],
+    videos: [],
+  },
+  {
+    id: "habitgarden",
+    title: "HabitGarden",
+    year: "2023",
+    season: "Sommer",
+    semester: "3",
+    course: "UX Design",
+    description: "Gewohnheits-Tracker mit metaphorischem Garten-Interface. Jede gepflegte Gewohnheit lässt eine Pflanze wachsen — visuelles Feedback als Motivationssystem.",
+    categories: ["App", "UX"],
+    tools: ["Figma", "React", "Firebase"],
+    contributors: ["Max Mustermann", "Sara Ahmed"],
+    images: [],
+    videos: [],
+  },
+  {
+    id: "signalboard",
+    title: "Signalboard",
+    year: "2023",
+    season: "Winter",
+    semester: "2",
+    course: "Grundlagen Interfacedesign",
+    description: "Dashboard zur Visualisierung von Echtzeit-Sensordaten aus dem Hochschul-Maker-Space. Modulares Widget-System, konfigurierbar per YAML.",
+    categories: ["Dashboard", "Daten"],
+    tools: ["JavaScript", "Chart.js", "WebSocket"],
+    contributors: ["Max Mustermann", "Tim Bauer"],
+    images: [],
+    videos: [],
+  },
+  {
+    id: "lernraum",
+    title: "Lernraum",
+    year: "2023",
+    season: "Sommer",
+    semester: "2",
+    course: "Mediengestaltung",
+    description: "Lernplattform für Grundschüler mit spielerischen Übungen zu Mathematik und Deutsch. Barrierefreies Design mit großen Schriften und einfacher Navigation.",
+    categories: ["Website", "UX"],
+    tools: ["HTML", "CSS", "JavaScript"],
+    contributors: ["Max Mustermann"],
+    images: [],
+    videos: [],
+  },
+  {
+    id: "meshprint",
+    title: "MeshPrint",
+    year: "2022",
+    season: "Winter",
+    semester: "1",
+    course: "Einführung Digitale Medien",
+    description: "Einstiegsprojekt: Generator für Muster aus geometrischen Gittern. Einstellbare Parameter steuern Dichte, Winkel und Farbverlauf — Ergebnis als SVG exportierbar.",
+    categories: ["Tool", "Generativ"],
+    tools: ["p5.js", "JavaScript"],
+    contributors: ["Max Mustermann"],
+    images: [],
+    videos: [],
+  },
+  {
+    id: "campusguide",
+    title: "Campus Guide AR",
+    year: "2022",
+    season: "Sommer",
+    semester: "1",
+    course: "Medieninformatik Grundlagen",
+    description: "Augmented-Reality-Wegweiser für den Hochschul-Campus. Prototyp einer PWA, die per Kamera Gebäude erkennt und Rauminformationen einblendet.",
+    categories: ["App", "AR"],
+    tools: ["A-Frame", "JavaScript", "PWA"],
+    contributors: ["Max Mustermann", "Kim Holm"],
+    images: [],
+    videos: [],
+  },
+];
+
+const allCategories = [...new Set(projects.flatMap(p => p.categories))].sort();
+const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
 ---
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Justin Carstensen — Portfolio</title>
+  <meta name="description" content="UI Designer & Medieninformatik-Student an der Hochschule Flensburg." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    :root {
+      --bg:         #f9f7f4;
+      --bg-card:    #ffffff;
+      --bg-subtle:  #f2efe9;
+      --ink-1:      #181612;
+      --ink-2:      #4a4640;
+      --ink-3:      #908b82;
+      --accent:     #bf5c2a;
+      --accent-bg:  #fdf1eb;
+      --accent-2:   #3a5ec4;
+      --accent-2bg: #eef1fb;
+      --line:       #e4e0d8;
+      --tag-bg:     #ede9e2;
+      --tag-color:  #6b6054;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-md:  0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+      --radius:     10px;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --font-serif: 'Fraunces', Georgia, serif;
+      --transition: 0.18s ease;
+      /* High contrast overrides applied via prefers-contrast */
+      --focus-ring: 3px solid #bf5c2a;
+    }
+
+    [data-theme="dark"] {
+      --bg:         #131210;
+      --bg-card:    #1c1a17;
+      --bg-subtle:  #1f1d1a;
+      --ink-1:      #f0ede8;
+      --ink-2:      #b5b0a6;
+      --ink-3:      #6b6660;
+      --accent:     #e07040;
+      --accent-bg:  #2a1c12;
+      --accent-2:   #6b8ee0;
+      --accent-2bg: #141a2e;
+      --line:       #2c2924;
+      --tag-bg:     #2a2722;
+      --tag-color:  #a09488;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
+      --shadow-md:  0 4px 16px rgba(0,0,0,.4), 0 1px 4px rgba(0,0,0,.2);
+      --focus-ring: 3px solid #e07040;
+    }
+
+    @media (prefers-contrast: more) {
+      :root {
+        --ink-1: #000000;
+        --ink-2: #1a1a1a;
+        --ink-3: #444444;
+        --line: #888888;
+        --accent: #8b3000;
+        --bg: #ffffff;
+        --bg-card: #ffffff;
+        --bg-subtle: #f0f0f0;
+        --tag-bg: #e0e0e0;
+        --tag-color: #111111;
+        --focus-ring: 3px solid #000000;
+      }
+      [data-theme="dark"] {
+        --ink-1: #ffffff;
+        --ink-2: #e8e8e8;
+        --ink-3: #bbbbbb;
+        --line: #666666;
+        --accent: #ff9966;
+        --bg: #000000;
+        --bg-card: #111111;
+        --bg-subtle: #1a1a1a;
+        --focus-ring: 3px solid #ffffff;
+      }
+    }
+
+    html { scroll-behavior: smooth; color-scheme: light; }
+    [data-theme="dark"] { color-scheme: dark; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--ink-1);
+      -webkit-font-smoothing: antialiased;
+      transition: background var(--transition), color var(--transition);
+      min-height: 100vh;
+    }
+
+    /* ── Focus styles (WCAG 2.4.7) ── */
+    :focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute;
+      top: -999px;
+      left: 16px;
+      z-index: 9999;
+      background: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 8px; }
+
+    /* ── Topbar ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      gap: 16px;
+    }
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      color: var(--ink-1);
+      text-decoration: none;
+      transition: color var(--transition);
+      flex-shrink: 0;
+    }
+    .logo:hover { color: var(--accent); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-3);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .nav-link:hover { color: var(--ink-1); }
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: none;
+      border: 1.5px solid var(--accent);
+      border-radius: 99px;
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      font-family: var(--font-sans);
+    }
+    .nav-cta:hover { background: var(--accent); color: white; }
+
+    /* Language toggle */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--bg-subtle);
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      padding: 2px;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 4px 9px;
+      border-radius: 99px;
+      border: none;
+      background: transparent;
+      color: var(--ink-3);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+    .lang-btn.active {
+      background: var(--bg-card);
+      color: var(--ink-1);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      background: var(--bg-subtle);
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      cursor: pointer;
+      padding: 0;
+      width: 52px;
+      height: 28px;
+      position: relative;
+      flex-shrink: 0;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .theme-toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--ink-1);
+      transition: transform 0.22s cubic-bezier(.4,0,.2,1), background var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    [data-theme="dark"] .theme-toggle-thumb {
+      transform: translateX(24px);
+      background: var(--accent);
+    }
+    .theme-toggle-thumb svg { width: 12px; height: 12px; }
+    .sun-icon { display: none; color: white; }
+    .moon-icon { display: block; color: white; }
+    [data-theme="dark"] .sun-icon { display: block; }
+    [data-theme="dark"] .moon-icon { display: none; }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(48px, 8vw, 96px) clamp(16px, 4vw, 64px) clamp(48px, 6vw, 72px);
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: end;
+    }
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 9vw, 88px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      color: var(--ink-1);
+      margin-bottom: 28px;
+    }
+    .hero-name em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: clamp(15px, 1.8vw, 17px);
+      line-height: 1.75;
+      color: var(--ink-2);
+      max-width: 54ch;
+    }
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-end;
+      padding-bottom: 4px;
+    }
+    .hero-meta-item {
+      font-size: 12px;
+      color: var(--ink-3);
+      text-align: right;
+      letter-spacing: 0.01em;
+    }
+    .hero-meta-item strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-2);
+      margin-bottom: 2px;
+    }
+
+    /* ── Contact button in hero ── */
+    .hero-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-2);
+      background: var(--bg-card);
+      padding: 8px 16px 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+      margin-top: 8px;
+    }
+    .hero-contact-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-bg);
+    }
+
+    /* ── Contact Modal ── */
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 8000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .contact-modal[hidden] { display: none; }
+    .contact-modal-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(12, 10, 8, 0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .contact-modal-box {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: clamp(28px, 5vw, 48px);
+      max-width: 440px;
+      width: 100%;
+      box-shadow: var(--shadow-md);
+    }
+    .contact-modal-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 800;
+      font-style: italic;
+      color: var(--ink-1);
+      margin-bottom: 8px;
+    }
+    .contact-modal-sub {
+      font-size: 14px;
+      color: var(--ink-3);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .contact-email-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+    }
+    .contact-email-addr {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink-1);
+      flex: 1;
+      word-break: break-all;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.01em;
+    }
+    .contact-copy-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
+      flex-shrink: 0;
+    }
+    .contact-copy-btn:hover { background: var(--accent); color: white; }
+    .contact-copy-btn.copied { background: #16a34a; border-color: #16a34a; color: white; }
+    .contact-open-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      padding: 13px 20px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    .contact-open-btn:hover { opacity: 0.88; }
+    .contact-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-3);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+    .contact-close:hover { background: var(--line); color: var(--ink-1); }
+
+    /* ── Filter + search bar ── */
+    .filter-wrap {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--bg-card);
+      transition: background var(--transition), border-color var(--transition);
+      position: sticky;
+      top: 60px;
+      z-index: 100;
+    }
+    .filter-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 64px);
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      min-height: 56px;
+      flex-wrap: wrap;
+    }
+    @media (min-width: 768px) {
+      .filter-inner { flex-wrap: nowrap; height: 56px; }
+    }
+    .filter-inner::-webkit-scrollbar { display: none; }
+    .filter-sep {
+      width: 1px;
+      height: 20px;
+      background: var(--line);
+      flex-shrink: 0;
+      margin: 0 12px;
+    }
+    .filter-group { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+    .filter-group-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+    .fpill {
+      appearance: none;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 99px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink-2);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color var(--transition), background var(--transition), color var(--transition);
+    }
+    .fpill:hover { border-color: var(--ink-3); color: var(--ink-1); }
+    .fpill.active[data-ft="category"] {
+      background: var(--accent-bg);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .fpill.active[data-ft="tool"] {
+      background: var(--accent-2bg);
+      border-color: var(--accent-2);
+      color: var(--accent-2);
+    }
+
+    /* Search input */
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      padding: 5px 12px;
+      flex-shrink: 0;
+      transition: border-color var(--transition);
+    }
+    .search-wrap:focus-within { border-color: var(--accent); }
+    .search-icon { color: var(--ink-3); flex-shrink: 0; }
+    .search-input {
+      border: none;
+      background: transparent;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--ink-1);
+      outline: none;
+      width: 140px;
+    }
+    .search-input::placeholder { color: var(--ink-3); }
+
+    /* Sort select */
+    .sort-select {
+      appearance: none;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-2);
+      background: var(--bg-subtle);
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      padding: 5px 28px 5px 12px;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23908b82' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      transition: border-color var(--transition), color var(--transition);
+      flex-shrink: 0;
+    }
+    .sort-select:focus { border-color: var(--accent); color: var(--ink-1); }
+
+    /* Active filter chips */
+    .active-filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+      flex: 1;
+      min-width: 0;
+      padding: 0 4px;
+    }
+    .active-filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px 3px 10px;
+      border-radius: 99px;
+      border: 1.5px solid;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      letter-spacing: 0.04em;
+      transition: opacity var(--transition);
+      white-space: nowrap;
+    }
+    .active-filter-chip[data-chip-type="category"] {
+      background: var(--accent-bg);
+      color: var(--accent);
+      border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    }
+    .active-filter-chip[data-chip-type="tool"] {
+      background: var(--accent-2bg);
+      color: var(--accent-2);
+      border-color: color-mix(in srgb, var(--accent-2) 40%, transparent);
+    }
+    .active-filter-chip:hover { opacity: 0.75; }
+    .chip-x {
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+    }
+    .result-count {
+      font-size: 12px;
+      color: var(--ink-3);
+      white-space: nowrap;
+      margin-left: auto;
+      padding-left: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Project list ── */
+    .project-item { animation: fadeUp 0.4s ease both; }
+    .project-item.hidden { display: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .project-item { animation: none; }
+    }
+
+    /* ── Empty state ── */
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--ink-3);
+    }
+    .empty-state strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink-2);
+      margin-bottom: 8px;
+    }
+    .reset-btn {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      border-radius: 99px;
+      padding: 8px 20px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: background var(--transition), color var(--transition);
+    }
+    .reset-btn:hover { background: var(--accent); color: white; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--line);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px clamp(16px, 4vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-name {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ink-1);
+    }
+    .footer-right { font-size: 12px; color: var(--ink-3); letter-spacing: 0.02em; }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-meta { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 20px; }
+      .hero-meta-item { text-align: left; }
+      .topbar .nav-link { display: none; }
+    }
+    @media (max-width: 540px) {
+      .nav-cta { display: none; }
+      .filter-inner { padding: 10px clamp(12px, 3vw, 32px); gap: 6px; flex-wrap: wrap; height: auto; }
+      .filter-sep { display: none; }
+      .filter-group { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to main content (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link" data-i18n="skip">Zum Hauptinhalt springen</a>
+
+  <!-- Topbar -->
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <a href="#" class="logo" aria-label="Justin Carstensen – Portfolio Startseite">Justin Carstensen</a>
+      <nav class="nav-right" aria-label="Hauptnavigation">
+        <a href="#projekte" class="nav-link" data-i18n="nav-projects">Projekte</a>
+        <button class="nav-cta" id="contact-btn" aria-haspopup="dialog" data-i18n="nav-contact">Kontakt</button>
+
+        <!-- Language toggle -->
+        <div class="lang-toggle" role="group" aria-label="Sprache wählen">
+          <button class="lang-btn active" id="lang-de" aria-pressed="true" lang="de">DE</button>
+          <button class="lang-btn" id="lang-en" aria-pressed="false" lang="en">EN</button>
+        </div>
+
+        <!-- Theme toggle -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" aria-live="polite">
+          <span class="theme-toggle-thumb" aria-hidden="true">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="contact-modal" hidden role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="contact-modal-bg" id="contact-modal-bg"></div>
+    <div class="contact-modal-box">
+      <button class="contact-close" id="contact-modal-close" aria-label="Schließen">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h2 class="contact-modal-title" id="contact-modal-title" data-i18n="contact-title">Kontakt</h2>
+      <p class="contact-modal-sub" data-i18n="contact-sub">Schreib mir gerne eine Mail. Ich freue mich auf deine Nachricht.</p>
+      <div class="contact-email-row">
+        <span class="contact-email-addr" id="contact-email-addr" aria-label="E-Mail-Adresse">hello@justin-carstensen.de</span>
+        <button class="contact-copy-btn" id="contact-copy-btn" aria-live="polite" data-i18n="contact-copy">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Kopieren
+        </button>
+      </div>
+      <a class="contact-open-btn" id="contact-mail-link" href="mailto:hello@justin-carstensen.de" data-i18n="contact-open">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Mail-Client öffnen
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-eyebrow" aria-hidden="true">
+      <span class="hero-eyebrow-dot"></span>
+      <span data-i18n="hero-eyebrow">B.Sc. Medieninformatik · Hochschule Flensburg</span>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <h1 class="hero-name" id="hero-heading">Justin<br /><em>Carstensen</em></h1>
+        <p class="hero-sub" data-i18n="hero-sub">
+          UI Designer mit Fokus auf Nutzererfahrung, visuelle Klarheit und interaktive Systeme.
+          Ich gestalte von der ersten Skizze bis zum fertigen Interface — mit einem Sinn für Details, die zählen.
+        </p>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <strong data-i18n="hero-meta-study">Studium</strong>
+          <span data-i18n="hero-meta-university">Hochschule Flensburg</span>
+        </div>
+        <div class="hero-meta-item">
+          <strong data-i18n="hero-meta-focus">Fokus</strong>
+          <span data-i18n="hero-meta-focus-val">UI / UX Design</span>
+        </div>
+        <button class="hero-contact-btn" id="hero-contact-btn" aria-haspopup="dialog">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span data-i18n="hero-contact-btn">E-Mail schreiben</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter + Search bar -->
+  <div class="filter-wrap" id="projekte">
+    <div class="filter-inner" role="search" aria-label="Projekte filtern und suchen">
+      <!-- Search -->
+      <div class="search-wrap">
+        <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input
+          class="search-input"
+          id="search-input"
+          type="search"
+          placeholder="Titel suchen…"
+          aria-label="Nach Projekttitel suchen"
+          autocomplete="off"
+          data-i18n-placeholder="search-placeholder"
+        />
+      </div>
+
+      <div class="filter-sep" aria-hidden="true"></div>
+
+      <!-- Sort -->
+      <select class="sort-select" id="sort-select" aria-label="Sortierung wählen">
+        <option value="semester-desc" data-i18n="sort-sem-desc">Semester ↓</option>
+        <option value="semester-asc" data-i18n="sort-sem-asc">Semester ↑</option>
+        <option value="year-desc" data-i18n="sort-year-desc">Jahr ↓</option>
+        <option value="year-asc" data-i18n="sort-year-asc">Jahr ↑</option>
+      </select>
+
+      <!-- Active filter chips area -->
+      <div class="active-filters" id="active-filters" aria-label="Aktive Filter"></div>
+
+      <span class="result-count" id="proj-count" aria-live="polite" aria-atomic="true">
+        {projects.length} Projekte
+      </span>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <main id="main-content" aria-label="Projektliste">
+    {projects.map((project, i) => (
+      <div class="project-item" style={`animation-delay:${i * 60}ms`} data-semester={project.semester} data-year={project.year}>
+        <ProjectCard {...project} index={i} />
+      </div>
+    ))}
+  </main>
+
+  <div class="empty-state" id="empty-state" role="status" aria-live="polite">
+    <strong data-i18n="empty-title">Keine Projekte gefunden</strong>
+    <span data-i18n="empty-sub">Filter oder Suche anpassen, um Ergebnisse zu sehen.</span>
+    <br />
+    <button class="reset-btn" id="reset-btn" data-i18n="reset-btn">Filter zurücksetzen</button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <span class="footer-name">Justin Carstensen</span>
+      <span class="footer-right" data-i18n="footer-right">B.Sc. Medieninformatik · Hochschule Flensburg</span>
+    </div>
+  </footer>
+
+  <script>
+    // ── i18n ──────────────────────────────────────────────────────────────
+    const TRANSLATIONS: Record<string, Record<string, string>> = {
+      de: {
+        skip: "Zum Hauptinhalt springen",
+        "nav-projects": "Projekte",
+        "nav-contact": "Kontakt",
+        "hero-eyebrow": "B.Sc. Medieninformatik · Hochschule Flensburg",
+        "hero-sub": "UI Designer mit Fokus auf Nutzererfahrung, visuelle Klarheit und interaktive Systeme. Ich gestalte von der ersten Skizze bis zum fertigen Interface — mit einem Sinn für Details, die zählen.",
+        "hero-meta-study": "Studium",
+        "hero-meta-university": "Hochschule Flensburg",
+        "hero-meta-focus": "Fokus",
+        "hero-meta-focus-val": "UI / UX Design",
+        "hero-contact-btn": "E-Mail schreiben",
+        "contact-title": "Kontakt",
+        "contact-sub": "Schreib mir gerne eine Mail. Ich freue mich auf deine Nachricht.",
+        "contact-copy": "Kopieren",
+        "contact-copied": "Kopiert!",
+        "contact-open": "Mail-Client öffnen",
+        "filter-cat": "Kategorie",
+        "filter-stack": "Stack",
+        "search-placeholder": "Titel suchen…",
+        "sort-sem-desc": "Semester ↓",
+        "sort-sem-asc": "Semester ↑",
+        "sort-year-desc": "Jahr ↓",
+        "sort-year-asc": "Jahr ↑",
+        "empty-title": "Keine Projekte gefunden",
+        "empty-sub": "Filter oder Suche anpassen, um Ergebnisse zu sehen.",
+        "reset-btn": "Filter zurücksetzen",
+        "footer-right": "B.Sc. Medieninformatik · Hochschule Flensburg",
+        "theme-toggle-to-dark": "Zu Dunkel-Modus wechseln",
+        "theme-toggle-to-light": "Zu Hell-Modus wechseln",
+        "close-contact": "Schließen",
+        "project-count-singular": "Projekt",
+        "project-count-plural": "Projekte",
+        "contact-close-label": "Kontaktfenster schließen",
+      },
+      en: {
+        skip: "Skip to main content",
+        "nav-projects": "Projects",
+        "nav-contact": "Contact",
+        "hero-eyebrow": "B.Sc. Media Informatics · Flensburg University",
+        "hero-sub": "UI Designer focused on user experience, visual clarity, and interactive systems. I design from the first sketch to the finished interface — with an eye for details that matter.",
+        "hero-meta-study": "Studies",
+        "hero-meta-university": "Flensburg University",
+        "hero-meta-focus": "Focus",
+        "hero-meta-focus-val": "UI / UX Design",
+        "hero-contact-btn": "Send an email",
+        "contact-title": "Contact",
+        "contact-sub": "Feel free to send me an email. I look forward to hearing from you.",
+        "contact-copy": "Copy",
+        "contact-copied": "Copied!",
+        "contact-open": "Open mail client",
+        "filter-cat": "Category",
+        "filter-stack": "Stack",
+        "search-placeholder": "Search by title…",
+        "sort-sem-desc": "Semester ↓",
+        "sort-sem-asc": "Semester ↑",
+        "sort-year-desc": "Year ↓",
+        "sort-year-asc": "Year ↑",
+        "empty-title": "No projects found",
+        "empty-sub": "Adjust filters or search to see results.",
+        "reset-btn": "Reset filters",
+        "footer-right": "B.Sc. Media Informatics · Flensburg University",
+        "theme-toggle-to-dark": "Switch to dark mode",
+        "theme-toggle-to-light": "Switch to light mode",
+        "close-contact": "Close",
+        "project-count-singular": "project",
+        "project-count-plural": "projects",
+        "contact-close-label": "Close contact window",
+      },
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'de';
+
+    function applyLang(lang: string) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+
+      const t = TRANSLATIONS[lang];
+
+      // Text elements
+      document.querySelectorAll<HTMLElement>('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n!;
+        if (t[key]) el.textContent = t[key];
+      });
+
+      // Placeholders
+      document.querySelectorAll<HTMLInputElement>('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder!;
+        if (t[key]) el.placeholder = t[key];
+      });
+
+      // Sort options
+      document.querySelectorAll<HTMLOptionElement>('[data-i18n]').forEach(el => {
+        if (el.tagName === 'OPTION') {
+          const key = el.dataset.i18n!;
+          if (t[key]) el.textContent = t[key];
+        }
+      });
+
+      // Lang buttons
+      const deBtn = document.getElementById('lang-de')!;
+      const enBtn = document.getElementById('lang-en')!;
+      deBtn.classList.toggle('active', lang === 'de');
+      enBtn.classList.toggle('active', lang === 'en');
+      deBtn.setAttribute('aria-pressed', lang === 'de' ? 'true' : 'false');
+      enBtn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+
+      // Update count label
+      updateCount();
+    }
+
+    document.getElementById('lang-de')!.addEventListener('click', () => applyLang('de'));
+    document.getElementById('lang-en')!.addEventListener('click', () => applyLang('en'));
+
+    // ── Theme ──────────────────────────────────────────────────────────────
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('theme-toggle')!;
+
+    function getSystemTheme() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    const storedTheme = localStorage.getItem('theme');
+    root.setAttribute('data-theme', storedTheme || 'light');
+
+    themeBtn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      const t = TRANSLATIONS[currentLang];
+      themeBtn.setAttribute('aria-label', next === 'dark' ? t['theme-toggle-to-light'] : t['theme-toggle-to-dark']);
+    });
+
+    // ── Contact modal ──────────────────────────────────────────────────────
+    const modal = document.getElementById('contact-modal')!;
+    const modalClose = document.getElementById('contact-modal-close')!;
+    const modalBg = document.getElementById('contact-modal-bg')!;
+    const copyBtn = document.getElementById('contact-copy-btn')!;
+    const EMAIL = 'hello@justin-carstensen.de';
+
+    let lastFocused: HTMLElement | null = null;
+
+    function openModal() {
+      lastFocused = document.activeElement as HTMLElement;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      // Focus first interactive element
+      setTimeout(() => modalClose.focus(), 50);
+      trapFocus(modal);
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      lastFocused?.focus();
+    }
+
+    // Focus trap inside modal (WCAG 2.1.2)
+    function trapFocus(el: HTMLElement) {
+      const focusable = el.querySelectorAll<HTMLElement>(
+        'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const handler = (e: KeyboardEvent) => {
+        if (e.key !== 'Tab') return;
+        if (e.shiftKey ? document.activeElement === first : document.activeElement === last) {
+          e.preventDefault();
+          (e.shiftKey ? last : first).focus();
+        }
+      };
+      el.addEventListener('keydown', handler);
+    }
+
+    document.getElementById('contact-btn')!.addEventListener('click', openModal);
+    document.getElementById('hero-contact-btn')!.addEventListener('click', openModal);
+    modalClose.addEventListener('click', closeModal);
+    modalBg.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(EMAIL);
+        const t = TRANSLATIONS[currentLang];
+        copyBtn.classList.add('copied');
+        copyBtn.textContent = t['contact-copied'];
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          const icon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+          copyBtn.innerHTML = icon + ' ' + t['contact-copy'];
+        }, 2000);
+      } catch {
+        // fallback: select text
+        const range = document.createRange();
+        const addr = document.getElementById('contact-email-addr')!;
+        range.selectNode(addr);
+        window.getSelection()?.removeAllRanges();
+        window.getSelection()?.addRange(range);
+      }
+    });
+
+    // ── Filter + Search + Sort ─────────────────────────────────────────────
+    const items = Array.from(document.querySelectorAll<HTMLElement>('.project-item'));
+    const countEl = document.getElementById('proj-count')!;
+    const emptyEl = document.getElementById('empty-state')!;
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+    const mainEl = document.getElementById('main-content')!;
+    const resetBtn = document.getElementById('reset-btn')!;
+    const activeFiltersEl = document.getElementById('active-filters')!;
+
+    let activeCats = new Set<string>();
+    let activeTools = new Set<string>();
+
+    function syncCardTags() {
+      // Sync category tags on all project cards
+      document.querySelectorAll<HTMLElement>('[data-filter-cat]').forEach(btn => {
+        const val = btn.dataset.filterCat!;
+        const isActive = activeCats.has(val);
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive.toString());
+      });
+      // Sync tool tags on all project cards
+      document.querySelectorAll<HTMLElement>('[data-filter-tool]').forEach(btn => {
+        const val = btn.dataset.filterTool!;
+        const isActive = activeTools.has(val);
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive.toString());
+      });
+    }
+
+    function renderChips() {
+      activeFiltersEl.innerHTML = '';
+      const mkChip = (type: string, val: string) => {
+        const chip = document.createElement('button');
+        chip.className = 'active-filter-chip';
+        chip.dataset.chipType = type;
+        chip.type = 'button';
+        chip.innerHTML = val + ' <span class="chip-x" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>';
+        chip.setAttribute('aria-label', `Filter „${val}" entfernen`);
+        chip.addEventListener('click', () => {
+          if (type === 'category') activeCats.delete(val);
+          else activeTools.delete(val);
+          syncCardTags();
+          renderChips();
+          filterAndSort();
+        });
+        activeFiltersEl.appendChild(chip);
+      };
+      activeCats.forEach(v => mkChip('category', v));
+      activeTools.forEach(v => mkChip('tool', v));
+    }
+
+    // Global trigger function used by ProjectCard tags
+    (window as any).__triggerFilter = function(type: string, val: string, _btn: HTMLElement) {
+      const set = type === 'category' ? activeCats : activeTools;
+      if (set.has(val)) set.delete(val);
+      else set.add(val);
+      syncCardTags();
+      renderChips();
+      filterAndSort();
+      // Scroll to filter bar
+      document.getElementById('projekte')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    searchInput.addEventListener('input', filterAndSort);
+    sortSelect.addEventListener('change', filterAndSort);
+
+    resetBtn.addEventListener('click', () => {
+      activeCats.clear();
+      activeTools.clear();
+      searchInput.value = '';
+      sortSelect.value = 'semester-desc';
+      syncCardTags();
+      renderChips();
+      filterAndSort();
+    });
+
+    function updateCount() {
+      const visible = items.filter(i => !i.classList.contains('hidden')).length;
+      const t = TRANSLATIONS[currentLang];
+      const word = visible === 1 ? t['project-count-singular'] : t['project-count-plural'];
+      countEl.textContent = `${visible} ${word}`;
+    }
+
+    function filterAndSort() {
+      const query = searchInput.value.toLowerCase().trim();
+
+      // Filter
+      items.forEach(item => {
+        const el = item.querySelector<HTMLElement>('[data-categories]')!;
+        const titleEl = item.querySelector<HTMLElement>('.ps-title');
+        const cats: string[] = JSON.parse(el.dataset.categories || '[]');
+        const tools: string[] = JSON.parse(el.dataset.tools || '[]');
+        const title = (titleEl?.textContent || '').toLowerCase();
+
+        const catOk = activeCats.size === 0 || [...activeCats].some(c => cats.includes(c));
+        const toolOk = activeTools.size === 0 || [...activeTools].some(t => tools.includes(t));
+        const searchOk = !query || title.includes(query);
+
+        item.classList.toggle('hidden', !(catOk && toolOk && searchOk));
+      });
+
+      // Sort
+      const sortVal = sortSelect.value;
+      const visible = items.filter(i => !i.classList.contains('hidden'));
+      visible.sort((a, b) => {
+        const semA = parseInt(a.dataset.semester || '0');
+        const semB = parseInt(b.dataset.semester || '0');
+        const yearA = parseInt(a.dataset.year || '0');
+        const yearB = parseInt(b.dataset.year || '0');
+        if (sortVal === 'semester-desc') return semB - semA;
+        if (sortVal === 'semester-asc') return semA - semB;
+        if (sortVal === 'year-desc') return yearB - yearA;
+        if (sortVal === 'year-asc') return yearA - yearB;
+        return 0;
+      });
+
+      // Re-append in sorted order
+      visible.forEach(el => mainEl.appendChild(el));
+      items.filter(i => i.classList.contains('hidden')).forEach(el => mainEl.appendChild(el));
+
+      const n = visible.length;
+      emptyEl.style.display = n === 0 ? 'block' : 'none';
+      updateCount();
+    }
+
+    // ── Init ───────────────────────────────────────────────────────────────
+    applyLang(currentLang);
+    filterAndSort();
+  </script>
+</body>
 </html>
