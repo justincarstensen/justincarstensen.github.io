@@ -24,19 +24,19 @@ const projectId = `proj-${id ?? index}`;
       <!-- Meta column: prominent project info -->
       <div class="ps-meta-block">
         <div class="ps-meta-row">
-          <span class="ps-meta-label">Semester</span>
+          <span class="ps-meta-label" data-i18n="meta-semester">Semester</span>
           <span class="ps-meta-value ps-meta-sem">{semester}. Semester</span>
         </div>
         <div class="ps-meta-row">
-          <span class="ps-meta-label">Zeitraum</span>
-          <span class="ps-meta-value">{season}semester {year}</span>
+          <span class="ps-meta-label" data-i18n="meta-period">Zeitraum</span>
+          <span class="ps-meta-value" data-i18n-period={`proj-${id}-period`} data-season={season} data-year={year}>{season}semester {year}</span>
         </div>
         <div class="ps-meta-row">
-          <span class="ps-meta-label">Kurs</span>
-          <span class="ps-meta-value ps-meta-course">{course}</span>
+          <span class="ps-meta-label" data-i18n="meta-course">Kurs</span>
+          <span class="ps-meta-value ps-meta-course" data-i18n-course={`proj-${id}-course`}>{course}</span>
         </div>
         <div class="ps-meta-divider"></div>
-        <p class="ps-desc">{description}</p>
+        <p class="ps-desc" data-i18n-desc={`proj-${id}-desc`}>{description}</p>
       </div>
     </div>
 
@@ -44,7 +44,7 @@ const projectId = `proj-${id ?? index}`;
       <!-- Header: title + categories (clickable) -->
       <header class="ps-header">
         <div class="ps-num" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
-        <h2 class="ps-title">{title}</h2>
+        <h2 class="ps-title" data-i18n-title={`proj-${id}-title`}>{title}</h2>
         <div class="ps-cats">
           {categories.map((c: string) => (
             <button
@@ -62,13 +62,13 @@ const projectId = `proj-${id ?? index}`;
       <div class="ps-attrs">
         {tools.length > 0 && (
           <div class="ps-attr">
-            <span class="ps-attr-label">Stack</span>
+            <span class="ps-attr-label" data-i18n="attr-stack">Stack</span>
             <TechIcons tools={tools} filterMode={true} />
           </div>
         )}
         {contributors.length > 0 && (
           <div class="ps-attr">
-            <span class="ps-attr-label">Team</span>
+            <span class="ps-attr-label" data-i18n="attr-team">Team</span>
             <span class="ps-contrib-list">{contributors.join(", ")}</span>
           </div>
         )}

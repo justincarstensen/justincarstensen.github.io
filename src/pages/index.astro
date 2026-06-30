@@ -420,35 +420,36 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
       role="dialog"
       aria-modal="false"
       aria-label="Barrierefreiheit-Einstellungen"
+      data-i18n-aria="a11y-panel-aria-label"
     >
       <div class="a11y-panel-header">
-        <span class="a11y-panel-title">Barrierefreiheit</span>
-        <button class="a11y-panel-reset" id="a11y-reset" type="button">Zurücksetzen</button>
+        <span class="a11y-panel-title" data-i18n="a11y-title">Barrierefreiheit</span>
+        <button class="a11y-panel-reset" id="a11y-reset" type="button" data-i18n="a11y-reset">Zurücksetzen</button>
       </div>
       <div class="a11y-panel-body">
 
         <!-- Vision -->
         <div class="a11y-section">
-          <span class="a11y-section-label">Sehen</span>
+          <span class="a11y-section-label" data-i18n="a11y-section-vision">Sehen</span>
           <div class="a11y-row">
             <div class="a11y-row-text">
-              <span class="a11y-row-label" id="lbl-contrast">Hoher Kontrast</span>
-              <span class="a11y-row-desc">Extrem Schwarz/Weiß, keine Farben</span>
+              <span class="a11y-row-label" id="lbl-contrast" data-i18n="a11y-contrast-label">Hoher Kontrast</span>
+              <span class="a11y-row-desc" data-i18n="a11y-contrast-desc">Extrem Schwarz/Weiß, keine Farben</span>
             </div>
             <button class="a11y-switch" role="switch" id="a11y-contrast" aria-checked="false" aria-labelledby="lbl-contrast" type="button"></button>
           </div>
           <div class="a11y-row" style="margin-top:10px;">
-            <span class="a11y-row-label" id="lbl-fontsize">Schriftgröße</span>
+            <span class="a11y-row-label" id="lbl-fontsize" data-i18n="a11y-fontsize-label">Schriftgröße</span>
             <div class="a11y-btn-group" role="group" aria-labelledby="lbl-fontsize">
-              <button class="a11y-opt-btn active" data-fontsize="normal" type="button">Normal</button>
-              <button class="a11y-opt-btn" data-fontsize="large" type="button">Groß</button>
-              <button class="a11y-opt-btn" data-fontsize="larger" type="button">Größer</button>
+              <button class="a11y-opt-btn active" data-fontsize="normal" type="button" data-i18n="a11y-fontsize-normal">Normal</button>
+              <button class="a11y-opt-btn" data-fontsize="large" type="button" data-i18n="a11y-fontsize-large">Groß</button>
+              <button class="a11y-opt-btn" data-fontsize="larger" type="button" data-i18n="a11y-fontsize-larger">Größer</button>
             </div>
           </div>
           <div class="a11y-row" style="margin-top:10px;">
             <div class="a11y-row-text">
-              <span class="a11y-row-label" id="lbl-links">Links unterstreichen</span>
-              <span class="a11y-row-desc">Alle Links mit Unterstrich</span>
+              <span class="a11y-row-label" id="lbl-links" data-i18n="a11y-links-label">Links unterstreichen</span>
+              <span class="a11y-row-desc" data-i18n="a11y-links-desc">Alle Links mit Unterstrich</span>
             </div>
             <button class="a11y-switch" role="switch" id="a11y-links" aria-checked="false" aria-labelledby="lbl-links" type="button"></button>
           </div>
@@ -456,18 +457,18 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
 
         <!-- Motor / Lesbarkeit -->
         <div class="a11y-section">
-          <span class="a11y-section-label">Motorik &amp; Lesbarkeit</span>
+          <span class="a11y-section-label" data-i18n="a11y-section-motor">Motorik &amp; Lesbarkeit</span>
           <div class="a11y-row">
             <div class="a11y-row-text">
-              <span class="a11y-row-label" id="lbl-motion">Animationen reduzieren</span>
-              <span class="a11y-row-desc">Alle Transitions deaktivieren</span>
+              <span class="a11y-row-label" id="lbl-motion" data-i18n="a11y-motion-label">Animationen reduzieren</span>
+              <span class="a11y-row-desc" data-i18n="a11y-motion-desc">Alle Transitions deaktivieren</span>
             </div>
             <button class="a11y-switch" role="switch" id="a11y-motion" aria-checked="false" aria-labelledby="lbl-motion" type="button"></button>
           </div>
           <div class="a11y-row" style="margin-top:8px;">
             <div class="a11y-row-text">
-              <span class="a11y-row-label" id="lbl-dyslexia">Leseschrift (Legasthenie)</span>
-              <span class="a11y-row-desc">Arial mit mehr Abstand</span>
+              <span class="a11y-row-label" id="lbl-dyslexia" data-i18n="a11y-dyslexia-label">Leseschrift (Legasthenie)</span>
+              <span class="a11y-row-desc" data-i18n="a11y-dyslexia-desc">Arial mit mehr Abstand</span>
             </div>
             <button class="a11y-switch" role="switch" id="a11y-dyslexia" aria-checked="false" aria-labelledby="lbl-dyslexia" type="button"></button>
           </div>
@@ -483,6 +484,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
       aria-expanded="false"
       aria-controls="a11y-panel"
       aria-label="Barrierefreiheit-Einstellungen öffnen"
+      data-i18n-aria="a11y-trigger-aria-label"
     >
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <circle cx="12" cy="4" r="1.5" fill="currentColor" stroke="none"/>
@@ -660,6 +662,31 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         "project-count-singular": "Projekt",
         "project-count-plural": "Projekte",
         "contact-close-label": "Kontaktfenster schließen",
+        "meta-semester": "Semester",
+        "meta-period": "Zeitraum",
+        "meta-course": "Kurs",
+        "attr-stack": "Stack",
+        "attr-team": "Team",
+        "season-Sommer": "Sommersemester",
+        "season-Winter": "Wintersemester",
+        "a11y-panel-aria-label": "Barrierefreiheit-Einstellungen",
+        "a11y-trigger-aria-label": "Barrierefreiheit-Einstellungen öffnen",
+        "a11y-title": "Barrierefreiheit",
+        "a11y-reset": "Zurücksetzen",
+        "a11y-section-vision": "Sehen",
+        "a11y-contrast-label": "Hoher Kontrast",
+        "a11y-contrast-desc": "Extrem Schwarz/Weiß, keine Farben",
+        "a11y-fontsize-label": "Schriftgröße",
+        "a11y-fontsize-normal": "Normal",
+        "a11y-fontsize-large": "Groß",
+        "a11y-fontsize-larger": "Größer",
+        "a11y-links-label": "Links unterstreichen",
+        "a11y-links-desc": "Alle Links mit Unterstrich",
+        "a11y-section-motor": "Motorik & Lesbarkeit",
+        "a11y-motion-label": "Animationen reduzieren",
+        "a11y-motion-desc": "Alle Transitions deaktivieren",
+        "a11y-dyslexia-label": "Leseschrift (Legasthenie)",
+        "a11y-dyslexia-desc": "Arial mit mehr Abstand",
       },
       en: {
         skip: "Skip to main content",
@@ -694,6 +721,127 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         "project-count-singular": "project",
         "project-count-plural": "projects",
         "contact-close-label": "Close contact window",
+        "meta-semester": "Semester",
+        "meta-period": "Period",
+        "meta-course": "Course",
+        "attr-stack": "Stack",
+        "attr-team": "Team",
+        "season-Sommer": "Summer Semester",
+        "season-Winter": "Winter Semester",
+        "a11y-panel-aria-label": "Accessibility settings",
+        "a11y-trigger-aria-label": "Open accessibility settings",
+        "a11y-title": "Accessibility",
+        "a11y-reset": "Reset",
+        "a11y-section-vision": "Vision",
+        "a11y-contrast-label": "High contrast",
+        "a11y-contrast-desc": "Extreme black/white, no colors",
+        "a11y-fontsize-label": "Font size",
+        "a11y-fontsize-normal": "Normal",
+        "a11y-fontsize-large": "Large",
+        "a11y-fontsize-larger": "Larger",
+        "a11y-links-label": "Underline links",
+        "a11y-links-desc": "Underline all links",
+        "a11y-section-motor": "Motor & Readability",
+        "a11y-motion-label": "Reduce animations",
+        "a11y-motion-desc": "Disable all transitions",
+        "a11y-dyslexia-label": "Dyslexia-friendly font",
+        "a11y-dyslexia-desc": "Arial with more spacing",
+      },
+    };
+
+    // Per-project translatable content (title, description, course name)
+    const PROJECT_I18N: Record<string, Record<string, { title: string; description: string; course: string }>> = {
+      safehaven: {
+        en: {
+          title: "Project Safe Heaven: Bachelor's Project",
+          course: "Bachelor's Project",
+          description: "Work in progress. A 2D pixel-art puzzle platformer built in Godot. The game explores mental states, fighting your way out of an inner low, and processing emotions. Different levels represent different emotional worlds, from dark cave systems to calm snowy landscapes. Pixel art assets were created in Aseprite. Made as a bachelor's project in the sixth semester.",
+        },
+      },
+      todoapp: {
+        en: {
+          title: "Todo App: Web Application",
+          course: "Web Apps with TypeScript and React",
+          description: "Full-stack todo app built as the exam project for the course 'Web Apps with TypeScript and React'. The app supports multiple todo lists with categories, todos with priority, due dates, tags and sub-todos, bulk actions, an undo function, dark/light mode, multilingual support (DE/EN/FR), and search and filter functionality.",
+        },
+      },
+      jankyjenga: {
+        en: {
+          title: "Janky Jenga: VR/PC Game",
+          course: "Virtual and Augmented Reality",
+          description: "Development of an asymmetric multiplayer game in Unity with OpenXR: a VR player uses motion controllers to pull physically simulated Jenga blocks from a tower, while a PC player destabilizes the tower with attacks. The physics simulation is based on realistic rigidbody interactions. 3D models were created in Blender. The project was made as group work and presented with a poster and trailer video.",
+        },
+      },
+      clockworkcms: {
+        en: {
+          title: "Clockwork Frontiers: CMS",
+          course: "Web Programming",
+          description: "Extension of the Clockwork Frontiers website with a complete content management system. The CMS provides login and user management, dynamically rendered pages via templating, a block-based page editor, and management of devlogs, tutorials, and tips with search and filter functionality. Data is stored in SQLite, with the backend running on Deno and Nunjucks as the templating engine. The project was built as an extension of the frontend assignment from the winter semester.",
+        },
+      },
+      leitsystem: {
+        en: {
+          title: "Wayfinding System: Flensburg University of Applied Sciences",
+          course: "Digital Media Concept Design",
+          description: "Concept and design of a complete wayfinding system for the campus of Flensburg University of Applied Sciences. The system includes outdoor and corridor signage, room signs with pictograms and bilingual labeling (DE/EN), door signs with photos of staff, as well as a newly designed campus map and floor plans. The color concept and shapes follow the university's corporate design, with colors identifying the individual buildings. The result is a set of templates visualized as mockups in Photoshop.",
+        },
+      },
+      rendering3d: {
+        en: {
+          title: "3D Rendering: Motion Tracking",
+          course: "3D Rendering",
+          description: "Integration of a 3D-rendered object into real video footage using motion tracking. The project covers camera tracking to reconstruct the camera movement, HDRI lighting for realistic light and shadow matching, shader development, and final compositing. The rendered object was seamlessly embedded into a real scene featuring a chessboard.",
+        },
+      },
+      frontenddesign: {
+        en: {
+          title: "Clockwork Frontiers: Website",
+          course: "Frontend Design",
+          description: "Development of a complete game website for Clockwork Frontiers as progressive enhancement without frameworks, using plain HTML, CSS, and JavaScript. The site includes a homepage with a game description and download CTA, a devlog section with chronologically linked version reports, a detailed tutorial page with a table of contents and game mechanic explanations, and a contact page with a form. The visual design picks up the game's isometric look and combines it with a warm retro aesthetic, gear motifs, and serif-driven typography.",
+        },
+      },
+      clockwork: {
+        en: {
+          title: "Clockwork Frontiers",
+          course: "Game Programming",
+          description: "Development of a 2.5D tower defense game in Unity according to a fixed set of requirements. Players plan and build the path for their enemies themselves and place towers along the route. Clockwork Frontiers was created as part of the Game Programming course and includes level design, game mechanics, and 3D assets.",
+        },
+      },
+      fahrrad3d: {
+        en: {
+          title: "Bicycle: 3D Modeling",
+          course: "3D Modeling",
+          description: "Detailed 3D modeling of two racing bikes in Blender. All essential components were modeled: frame, wheels with spokes, cassette, rear derailleur, chain, crankset, handlebars with brake levers, and saddle. Special attention was paid to a technically precise drivetrain and the authentic geometry of both bikes. A bench was also modeled, based on self-taken reference photos. The models were arranged in a shared scene and rendered from multiple perspectives.",
+        },
+      },
+      sandsofdeception: {
+        en: {
+          title: "Sands of Deception: Board Game",
+          course: "Game Design",
+          description: "Concept and complete design of a card and board game for 2 to 4 players. In 'Sands of Deception', players take on the role of explorers fighting over artifacts inside a pyramid, which are scored as a point system. The game design includes a 9-room labyrinth board, over 150 cards across five types (blessing, monster, task, trap, pillar), a player board for managing action points, and 3D-modeled artifact tokens created in Blender. The result is a complete set of print templates and a rulebook covering the core loop, actions, and combat system.",
+        },
+      },
+      einkaufsliste: {
+        en: {
+          title: "Shared Flat Shopping List: App Prototype",
+          course: "Interface and Interaction Design",
+          description: "Development and prototyping of a mobile shopping list app for shared flats. The app enables group shopping with shared lists, budget management, and receipt uploads. The process included concept design, lo-fi wireframes with interaction flows, and a complete hi-fi prototype including usability testing. Features: categorized shopping lists, sorting, a finance overview with debt settlement, a pinboard, and a chat function.",
+        },
+      },
+      rundgang2024: {
+        en: {
+          title: "Open House 2024: Corporate Design",
+          course: "Fundamentals of Design",
+          description: "Development of a complete corporate design for the 2024 Open House ('Rundgang') at Flensburg University of Applied Sciences under the motto 'Innovation and Renewal'. The result is an A2 poster, a tri-fold flyer, and an invitation card, all coordinated in design, typography, and color language. The visual concept combines a vivid space theme with clear information architecture: astronaut, planets, and constellations as metaphors for new beginnings and discovery.",
+        },
+      },
+    };
+
+    // Category tag display labels (only categories whose English name differs from German)
+    const CATEGORY_I18N: Record<string, Record<string, string>> = {
+      en: {
+        "Gestaltung": "Design",
+        "Prototyp": "Prototype",
       },
     };
 
@@ -718,12 +866,74 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         if (t[key]) el.placeholder = t[key];
       });
 
+      // Aria-labels
+      document.querySelectorAll<HTMLElement>('[data-i18n-aria]').forEach(el => {
+        const key = el.dataset.i18nAria!;
+        if (t[key]) el.setAttribute('aria-label', t[key]);
+      });
+
       // Sort options
       document.querySelectorAll<HTMLOptionElement>('[data-i18n]').forEach(el => {
         if (el.tagName === 'OPTION') {
           const key = el.dataset.i18n!;
           if (t[key]) el.textContent = t[key];
         }
+      });
+
+      // Project titles
+      document.querySelectorAll<HTMLElement>('[data-i18n-title]').forEach(el => {
+        const id = el.dataset.i18nTitle!.replace(/^proj-/, '').replace(/-title$/, '');
+        const translated = PROJECT_I18N[id]?.[lang]?.title;
+        if (lang === 'de' || !translated) {
+          // restore original (German) text only if we previously stored it
+          if (el.dataset.origText) el.textContent = el.dataset.origText;
+        } else {
+          if (!el.dataset.origText) el.dataset.origText = el.textContent || '';
+          el.textContent = translated;
+        }
+      });
+
+      // Project descriptions
+      document.querySelectorAll<HTMLElement>('[data-i18n-desc]').forEach(el => {
+        const id = el.dataset.i18nDesc!.replace(/^proj-/, '').replace(/-desc$/, '');
+        const translated = PROJECT_I18N[id]?.[lang]?.description;
+        if (lang === 'de' || !translated) {
+          if (el.dataset.origText) el.textContent = el.dataset.origText;
+        } else {
+          if (!el.dataset.origText) el.dataset.origText = el.textContent || '';
+          el.textContent = translated;
+        }
+      });
+
+      // Project course names
+      document.querySelectorAll<HTMLElement>('[data-i18n-course]').forEach(el => {
+        const id = el.dataset.i18nCourse!.replace(/^proj-/, '').replace(/-course$/, '');
+        const translated = PROJECT_I18N[id]?.[lang]?.course;
+        const section = el.closest<HTMLElement>('[data-course]');
+        if (lang === 'de' || !translated) {
+          if (el.dataset.origText) el.textContent = el.dataset.origText;
+        } else {
+          if (!el.dataset.origText) el.dataset.origText = el.textContent || '';
+          el.textContent = translated;
+        }
+        if (section) section.dataset.course = el.textContent || '';
+      });
+
+      // Project period (season + year), e.g. "Sommersemester 2026" / "Summer Semester 2026"
+      document.querySelectorAll<HTMLElement>('[data-i18n-period]').forEach(el => {
+        const season = el.dataset.season!;
+        const year = el.dataset.year!;
+        const seasonWord = t[`season-${season}`] || season;
+        el.textContent = `${seasonWord} ${year}`;
+      });
+
+      // Category tag labels + filter tooltips
+      document.querySelectorAll<HTMLButtonElement>('[data-filter-cat]').forEach(btn => {
+        const val = btn.dataset.filterCat!;
+        const label = CATEGORY_I18N[lang]?.[val] || val;
+        // preserve the active-state span/icon if any by just resetting text content
+        btn.textContent = label;
+        btn.title = lang === 'de' ? `Nach „${val}" filtern` : `Filter by "${label}"`;
       });
 
       // Lang buttons
@@ -736,6 +946,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
 
       // Update count label
       updateCount();
+      if (typeof renderChips === 'function') renderChips();
     }
 
     document.getElementById('lang-de')!.addEventListener('click', () => applyLang('de'));
@@ -862,11 +1073,12 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
       activeFiltersEl.innerHTML = '';
       const mkChip = (type: string, val: string) => {
         const chip = document.createElement('button');
+        const label = type === 'category' ? (CATEGORY_I18N[currentLang]?.[val] || val) : val;
         chip.className = 'active-filter-chip';
         chip.dataset.chipType = type;
         chip.type = 'button';
-        chip.innerHTML = val + ' <span class="chip-x" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>';
-        chip.setAttribute('aria-label', `Filter '${val}" entfernen`);
+        chip.innerHTML = label + ' <span class="chip-x" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>';
+        chip.setAttribute('aria-label', currentLang === 'de' ? `Filter '${label}" entfernen` : `Remove filter "${label}"`);
         chip.addEventListener('click', () => {
           if (type === 'category') activeCats.delete(val);
           else activeTools.delete(val);
