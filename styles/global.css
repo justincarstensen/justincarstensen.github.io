@@ -1822,30 +1822,35 @@ body {
 img.ti-icon {
   display: block;
   object-fit: contain;
-  /* Some brand logos (e.g. Drizzle ORM's pale green) are too close in
-     lightness to --bg-subtle to read clearly on the light theme. Stack
-     hard-edged drop-shadows in 8 directions to fake a crisp dark outline
-     around the icon's silhouette — a single soft drop-shadow was too faint
-     at 18px to notice. */
-  filter:
-    drop-shadow(1px 0 0 rgba(0, 0, 0, 0.55))
-    drop-shadow(-1px 0 0 rgba(0, 0, 0, 0.55))
-    drop-shadow(0 1px 0 rgba(0, 0, 0, 0.55))
-    drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.55))
-    drop-shadow(0.75px 0.75px 0 rgba(0, 0, 0, 0.55))
-    drop-shadow(-0.75px 0.75px 0 rgba(0, 0, 0, 0.55))
-    drop-shadow(0.75px -0.75px 0 rgba(0, 0, 0, 0.55))
-    drop-shadow(-0.75px -0.75px 0 rgba(0, 0, 0, 0.55));
 }
-[data-theme="dark"] img.ti-icon {
+/* Some brand logos (e.g. Drizzle ORM's pale green, Figma's white background,
+   Unity's near-black mark) are too close in lightness to --bg-subtle to read
+   clearly on the light theme. A real CSS `outline` only draws a rectangle
+   around the image's bounding box, not around the icon's actual silhouette —
+   so we stack hard-edged drop-shadows in 4 directions instead, which trace
+   the transparent PNG/SVG's visible pixels. Scoped to just these icons so
+   the rest stay crisp without an added outline. */
+img.ti-icon[alt="Unity"],
+img.ti-icon[alt="Figma"],
+img.ti-icon[alt="Drizzle ORM"] {
+  filter:
+    drop-shadow(0.5px 0 0 rgba(0, 0, 0, 0.25))
+    drop-shadow(-0.5px 0 0 rgba(0, 0, 0, 0.25))
+    drop-shadow(0 0.5px 0 rgba(0, 0, 0, 0.25))
+    drop-shadow(0 -0.5px 0 rgba(0, 0, 0, 0.25));
+}
+[data-theme="dark"] img.ti-icon[alt="Unity"],
+[data-theme="dark"] img.ti-icon[alt="Figma"],
+[data-theme="dark"] img.ti-icon[alt="Drizzle ORM"] {
   /* Dark theme's --bg-subtle is already dark, so light icons read fine;
      only re-enable the outline for icons that are themselves dark. */
   filter:
-    drop-shadow(1px 0 0 rgba(255, 255, 255, 0.25))
-    drop-shadow(-1px 0 0 rgba(255, 255, 255, 0.25))
-    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.25))
-    drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.25));
+    drop-shadow(0.5px 0 0 rgba(255, 255, 255, 0.15))
+    drop-shadow(-0.5px 0 0 rgba(255, 255, 255, 0.15))
+    drop-shadow(0 0.5px 0 rgba(255, 255, 255, 0.15))
+    drop-shadow(0 -0.5px 0 rgba(255, 255, 255, 0.15));
 }
+
 
 /* ── Fallback text (2 letters) ── */
 .ti-fallback {
