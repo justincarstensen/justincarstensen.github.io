@@ -4,37 +4,37 @@ import ProjectCard from "../components/ProjectCard.astro";
 const projects = [
   {
     id: "safehaven",
-    title: "Project Safe Heaven – Bachelor Projekt",
+    title: "Project Safe Heaven: Bachelor Projekt",
     year: "2026",
-    season: "Winter",
+    season: "Sommer",
     semester: "6",
     course: "Bachelor Projekt",
-    description: "Work in Progress. Puzzle-Plattformer im 2D-Pixel-Stil, entwickelt in Godot. Das Spiel thematisiert mentale Zustaende, das Herauskaempfen aus einem inneren Tief und die Verarbeitung von Emotionen. Verschiedene Level repraesentieren unterschiedliche emotionale Welten – von dunklen Hoehlensystemen und erdrückenden Raeumen bis hin zu weissen, ruhigen Schneelandschaften. Pixel-Art-Assets wurden in Aseprite erstellt. Entstanden als Bachelor Projekt im sechsten Semester.",
+    description: "Work in Progress. Puzzle-Plattformer im 2D-Pixel-Stil, entwickelt in Godot. Das Spiel thematisiert mentale Zustaende, das Herauskaempfen aus einem inneren Tief und die Verarbeitung von Emotionen. Verschiedene Level stehen fuer unterschiedliche emotionale Welten, von dunklen Hoehlensystemen bis zu ruhigen Schneelandschaften. Pixel-Art-Assets wurden in Aseprite erstellt. Entstanden als Bachelor Projekt im sechsten Semester.",
     categories: ["Game", "2D"],
     tools: ["Godot", "GDScript", "Aseprite"],
-    contributors: [],
+    contributors: ["Reshi von Oldenburg", "Moritz Eismann", "Florian Cenzolo"],
     images: [
-      "/safehaven/level-schnee.png",
       "/safehaven/level-dunkel.png",
       "/safehaven/level-feind.png",
       "/safehaven/level-pendel.png",
       "/safehaven/level-wippe.png",
       "/safehaven/level-hoehle.png",
+      "/safehaven/level-schnee.png",
       "/safehaven/level-portal.png",
     ],
     videos: [],
   },
   {
     id: "todoapp",
-    title: "Todo App – Webapplikation",
+    title: "Todo App: Webapplikation",
     year: "2026",
     season: "Sommer",
     semester: "6",
     course: "Webapps mit TypeScript und React",
-    description: "Fullstack-Todo-App als Prüfungsleistung im Kurs 'Webapps mit TypeScript und React'. Die App ermöglicht mehrere Todo-Listen mit Kategorien, Todos mit Priorität, Fälligkeitsdatum, Tags und Sub-Todos, Bulk-Aktionen, Undo-Funktion, Dark/Light-Mode, Mehrsprachigkeit (DE/EN/FR) sowie Such- und Filterfunktion. Stack: Next.js 16, React 19, TypeScript, Material UI v9, Drizzle ORM, TanStack Query, Better Auth, SQLite, Zod, next-intl.",
+    description: "Fullstack-Todo-App als Pruefungsleistung im Kurs 'Webapps mit TypeScript und React'. Die App ermoeglicht mehrere Todo-Listen mit Kategorien, Todos mit Prioritaet, Faelligkeitsdatum, Tags und Sub-Todos, Bulk-Aktionen, Undo-Funktion, Dark/Light-Mode, Mehrsprachigkeit (DE/EN/FR) sowie Such- und Filterfunktion.",
     categories: ["Web", "App"],
     tools: ["Next.js", "React", "TypeScript", "MUI", "Drizzle ORM", "TanStack Query", "SQLite"],
-    contributors: [],
+    contributors: ["Niclas Merkel"],
     images: [
       "/todoapp/listen-dark.png",
       "/todoapp/karten-dark.png",
@@ -48,15 +48,15 @@ const projects = [
   },
   {
     id: "jankyjenga",
-    title: "Janky Jenga – VR/PC Game",
+    title: "Janky Jenga: VR/PC Game",
     year: "2025",
     season: "Winter",
     semester: "5",
     course: "Virtuelle und Erweiterte Realität",
-    description: "Entwicklung eines asymmetrischen Multiplayer-Spiels in Unity mit OpenXR: Ein VR-Spieler zieht mit den Motion-Controllern physikalisch simulierte Jenga-Bloecke aus einem Turm, waehrend ein PC-Spieler den Turm mit Angriffen destabilisiert. Die Physik-Simulation basiert auf realistischen Rigidbody-Interaktionen. 3D-Modelle wurden in Blender erstellt. Das Projekt entstand als Gruppenarbeit (Gruppe 8) und wurde mit einem Poster und Trailer-Video praesentiert.",
+    description: "Entwicklung eines asymmetrischen Multiplayer-Spiels in Unity mit OpenXR: Ein VR-Spieler zieht mit den Motion-Controllern physikalisch simulierte Jenga-Bloecke aus einem Turm, waehrend ein PC-Spieler den Turm mit Angriffen destabilisiert. Die Physik-Simulation basiert auf realistischen Rigidbody-Interaktionen. 3D-Modelle wurden in Blender erstellt. Das Projekt entstand als Gruppenarbeit und wurde mit einem Poster und Trailer-Video praesentiert.",
     categories: ["3D", "Game", "VR"],
     tools: ["Unity", "C#", "Blender", "OpenXR"],
-    contributors: ["Gruppe 8"],
+    contributors: ["Leonhard Bünger", "Niclas Merkel", "Reshi von Oldenburg"],
     images: [
       "/jankyjenga/pc-ingame.png",
       "/jankyjenga/vr-ingame.png",
@@ -66,70 +66,10 @@ const projects = [
     videos: ["/jankyjenga/trailer.mp4"],
   },
   {
-    id: "leitsystem",
-    title: "Leitsystem Hochschule Flensburg",
-    year: "2025",
-    season: "Winter",
-    semester: "4",
-    course: "Konzeption Digitaler Medien",
-    description: "Konzeption und Gestaltung eines vollstaendigen Leitsystems fuer den Campus der Hochschule Flensburg. Das System umfasst Wegweiser fuer Aussenbereich und Gaenge, Raumschilder mit Piktogrammen und zweisprachiger Beschriftung (DE/EN), Tuerschilder mit Personenfotos und Fachbereichsfarben sowie einen neu gestalteten Campusplan und Gebaeudegrundrisse. Das Farbkonzept orientiert sich an den Gebaeuden und Fachbereichen. Entstanden sind Mockups und physisch umgesetzte Exponate.",
-    categories: ["UI", "Print", "Gestaltung"],
-    tools: ["Adobe Illustrator", "Adobe InDesign"],
-    contributors: [],
-    images: [
-      "/leitsystem/campusmap.png",
-      "/leitsystem/tuerschild.png",
-      "/leitsystem/wegweiser-gang.png",
-      "/leitsystem/raumschild-hs.png",
-      "/leitsystem/grundriss-eg.png",
-      "/leitsystem/wegweiser-aussen.png",
-      "/leitsystem/foto-infotafel.png",
-      "/leitsystem/foto-wegweiser.png",
-      "/leitsystem/foto-tuerschild.png",
-      "/leitsystem/foto-gang.png",
-    ],
-    videos: [],
-  },
-  {
-    id: "clockwork",
-    title: "Clockwork Frontiers",
-    year: "2024",
-    season: "Winter",
-    semester: "4",
-    course: "Spieleprogrammierung",
-    description: "Entwicklung eines 3D-Spiels in Unity nach vorgegebenen Anforderungen. Clockwork Frontiers entstand im Rahmen des Kurses Spieleprogrammierung und umfasst Leveldesign, Spielmechaniken und 3D-Assets.",
-    categories: ["3D", "Game"],
-    tools: ["Unity", "C#"],
-    contributors: ["Max Mustermann"],
-    images: ["/clockworkwebsite/1.png", "/clockworkwebsite/2.png", "/clockworkwebsite/3.png"],
-    videos: ["/clockworkwebsite/demo.mp4"],
-  },
-  {
-    id: "frontenddesign",
-    title: "Clockwork Frontiers – Webseite",
-    year: "2025",
-    season: "Winter",
-    semester: "4",
-    course: "Frontend Design",
-    description: "Entwicklung einer vollstaendigen Spielwebseite fuer Clockwork Frontiers als progressive Enhancement ohne Frameworks – reines HTML, CSS und JavaScript. Die Seite umfasst eine Startseite mit Game-Beschreibung und Download-CTA, eine Devlog-Sektion mit chronologisch verlinkten Versionsberichten (1.2 bis 1.4), eine ausfuehrliche Tutorial-Seite mit Inhaltsverzeichnis und Spielmechanik-Erklaerungen sowie eine Kontaktseite mit Formular. Das visuelle Design orientiert sich an einer warmen Retro-Aestethik mit isometrischen Spielscreenshots, Zahnrad-Motiven und serifenbetonter Typografie.",
-    categories: ["UI", "Web"],
-    tools: ["HTML", "CSS", "JavaScript"],
-    contributors: [],
-    images: [
-      "/frontenddesign/screenshot-1.png",
-      "/frontenddesign/screenshot-2.png",
-      "/frontenddesign/screenshot-3.png",
-      "/frontenddesign/screenshot-4.png",
-      "/frontenddesign/screenshot-5.png",
-      "/frontenddesign/screenshot-6.png",
-    ],
-    videos: [],
-  },
-  {
     id: "clockworkcms",
-    title: "Clockwork Frontiers – CMS",
+    title: "Clockwork Frontiers: CMS",
     year: "2025",
-    season: "Sommer",
+    season: "Winter",
     semester: "5",
     course: "WWW-Programmierung",
     description: "Erweiterung der Clockwork-Frontiers-Webseite um ein vollstaendiges Content-Management-System. Das CMS ermoeglicht Login und Benutzerverwaltung, dynamisch gerenderte Seiten per Templating, einen blockbasierten Seiteneditor sowie die Verwaltung von Devlogs, Tutorials und Tipps mit Such- und Filterfunktion. Die Datenhaltung erfolgt ueber SQLite, das Backend laeuft mit Deno und Nunjucks als Template-Engine. Das Projekt entstand als Erweiterung der Frontend-Aufgabe aus dem Wintersemester.",
@@ -147,16 +87,93 @@ const projects = [
     videos: [],
   },
   {
-    id: "fahrrad3d",
-    title: "Fahrrad – 3D-Modellierung",
-    year: "2024",
+    id: "leitsystem",
+    title: "Leitsystem Hochschule Flensburg",
+    year: "2025",
     season: "Sommer",
+    semester: "4",
+    course: "Konzeption Digitaler Medien",
+    description: "Konzeption und Gestaltung eines vollstaendigen Leitsystems fuer den Campus der Hochschule Flensburg. Das System umfasst Wegweiser fuer Aussenbereich und Gaenge, Raumschilder mit Piktogrammen und zweisprachiger Beschriftung (DE/EN), Tuerschilder mit Personenfotos sowie einen neu gestalteten Campusplan und Gebaeudegrundrisse. Farbkonzept und Formen orientieren sich am Corporate Design der Hochschule, die Farben kennzeichnen die einzelnen Gebaeude. Entstanden sind Vorlagen, die als Mockups in Photoshop visualisiert wurden.",
+    categories: ["UI", "Print", "Gestaltung"],
+    tools: ["Adobe Illustrator", "Adobe InDesign"],
+    contributors: ["Leonhard Bünger", "Niclas Merkel", "Berkay-Enes Erdogan","Nikolas Koch", "Merten Hansen"],
+    images: [
+      "/leitsystem/foto-infotafel.png",
+      "/leitsystem/foto-wegweiser.png",
+      "/leitsystem/foto-tuerschild.png",
+      "/leitsystem/foto-gang.png",
+      "/leitsystem/campusmap.png",
+      "/leitsystem/tuerschild.png",
+      "/leitsystem/wegweiser-gang.png",
+      "/leitsystem/raumschild-hs.png",
+      "/leitsystem/grundriss-eg.png",
+      "/leitsystem/wegweiser-aussen.png",
+    ],
+    videos: [],
+  },
+  {
+    id: "rendering3d",
+    title: "3D Rendering: Motion Tracking",
+    year: "2025",
+    season: "Sommer",
+    semester: "4",
+    course: "3D Rendering",
+    description: "Integration eines 3D-gerendereten Objekts in reales Videomaterial mittels Motion Tracking. Das Projekt umfasst Camera Tracking zur Rekonstruktion der Kamerabewegung, HDRI-Beleuchtung fuer realistische Licht- und Schattenanpassung, Shader-Entwicklung sowie das abschliessende Compositing. Das gerenderte Objekt wurde nahtlos in eine reale Szene mit Schachbrett eingebettet.",
+    categories: ["3D", "Video"],
+    tools: ["Blender"],
+    contributors: ["Nikolas Koch"],
+    images: [
+      "/rendering3d/tracking.png",
+      "/rendering3d/render.png",
+    ],
+    videos: ["/rendering3d/tracking.mp4" , "/rendering3d/render.mp4"],
+  },
+  {
+    id: "frontenddesign",
+    title: "Clockwork Frontiers: Webseite",
+    year: "2025",
+    season: "Sommer",
+    semester: "4",
+    course: "Frontend Design",
+    description: "Entwicklung einer vollstaendigen Spielwebseite fuer Clockwork Frontiers als progressive Enhancement ohne Frameworks, mit reinem HTML, CSS und JavaScript. Die Seite umfasst eine Startseite mit Game-Beschreibung und Download-CTA, eine Devlog-Sektion mit chronologisch verlinkten Versionsberichten, eine ausfuehrliche Tutorial-Seite mit Inhaltsverzeichnis und Spielmechanik-Erklaerungen sowie eine Kontaktseite mit Formular. Das visuelle Design greift den isometrischen Look des Spiels auf und verbindet ihn mit einer warmen Retro-Aesthetik, Zahnrad-Motiven und serifenbetonter Typografie.",
+    categories: ["UI", "Web"],
+    tools: ["HTML", "CSS", "JavaScript"],
+    contributors: ["Nikolas Koch"],
+    images: [
+      "/frontenddesign/screenshot-1.png",
+      "/frontenddesign/screenshot-2.png",
+      "/frontenddesign/screenshot-3.png",
+      "/frontenddesign/screenshot-4.png",
+      "/frontenddesign/screenshot-5.png",
+      "/frontenddesign/screenshot-6.png",
+    ],
+    videos: [],
+  },
+  {
+    id: "clockwork",
+    title: "Clockwork Frontiers",
+    year: "2025",
+    season: "Sommer",
+    semester: "4",
+    course: "Spieleprogrammierung",
+    description: "Entwicklung eines 2.5D Tower-Defense-Spiels in Unity nach vorgegebenen Anforderungen. Spieler planen und bauen den Weg fuer ihre Gegner selbst und platzieren Tuerme entlang der Strecke. Clockwork Frontiers entstand im Rahmen des Kurses Spieleprogrammierung und umfasst Leveldesign, Spielmechaniken und 3D-Assets.",
+    categories: ["3D", "Game"],
+    tools: ["Unity", "C#"],
+    contributors: ["Nikolas Koch"],
+    images: ["/clockworkwebsite/1.png", "/clockworkwebsite/2.png", "/clockworkwebsite/3.png"],
+    videos: ["/clockworkwebsite/demo.mp4"],
+  },
+  {
+    id: "fahrrad3d",
+    title: "Fahrrad: 3D-Modellierung",
+    year: "2024",
+    season: "Winter",
     semester: "3",
     course: "3D-Modellierung",
-    description: "Detaillierte 3D-Modellierung von zwei Rennradern in Blender. Modelliert wurden alle wesentlichen Komponenten: Rahmen, Laufraeder mit Speichen, Kassette, Schaltwerk, Kette, Kurbel, Lenker mit Bremsgriffen sowie Sattel. Besonderes Augenmerk lag auf dem technisch praezisen Antriebsstrang und der authentischen Geometrie beider Raeder. Die Modelle wurden in einer gemeinsamen Szene mit Fahrradstaender arrangiert und aus mehreren Perspektiven gerendert.",
+    description: "Detaillierte 3D-Modellierung von zwei Rennraedern in Blender. Modelliert wurden alle wesentlichen Komponenten: Rahmen, Laufraeder mit Speichen, Kassette, Schaltwerk, Kette, Kurbel, Lenker mit Bremsgriffen sowie Sattel. Besonderes Augenmerk lag auf dem technisch praezisen Antriebsstrang und der authentischen Geometrie beider Raeder. Zusaetzlich wurde eine Bank modelliert, nach selbst aufgenommenen Fotos als Vorlage. Die Modelle wurden in einer gemeinsamen Szene arrangiert und aus mehreren Perspektiven gerendert.",
     categories: ["3D"],
     tools: ["Blender"],
-    contributors: [],
+    contributors: ["Nikolas Koch", "Leni Lopau", "Annika Zehms", "Emilia Wink"],
     images: [
       "/fahrrad3d/overview-1.png",
       "/fahrrad3d/overview-2.png",
@@ -170,15 +187,15 @@ const projects = [
   },
   {
     id: "sandsofdeception",
-    title: "Sands of Deception – Brettspiel",
+    title: "Sands of Deception: Brettspiel",
     year: "2024",
-    season: "Sommer",
+    season: "Winter",
     semester: "3",
     course: "Game Design",
-    description: "Konzept und vollstaendiges Design eines Karten- und Brettspiels fuer 2 bis 4 Spieler. In 'Sands of Deception' schluefen die Spieler in die Rolle von Forschern, die in einer Pyramide um Artefakte kaeimpfen. Das Spieldesign umfasst ein 9-Raum-Labyrinth-Spielbrett, ueber 150 Karten in fuenf Typen (Segen, Monster, Aufgabe, Falle, Saeule), ein Spielertableau zur Aktionspunkte-Verwaltung sowie 3D-modellierte Artefakt-Token in Blender. Entstanden sind vollstaendige Druckvorlagen und ein Regelwerk mit Core-Loop, Aktionen und Kampfsystem.",
+    description: "Konzept und vollstaendiges Design eines Karten- und Brettspiels fuer 2 bis 4 Spieler. In 'Sands of Deception' schluepfen die Spieler in die Rolle von Forschern, die in einer Pyramide um Artefakte kaempfen, welche als Punktesystem gewertet werden. Das Spieldesign umfasst ein 9-Raum-Labyrinth-Spielbrett, ueber 150 Karten in fuenf Typen (Segen, Monster, Aufgabe, Falle, Saeule), ein Spielertableau zur Aktionspunkte-Verwaltung sowie 3D-modellierte Artefakt-Token in Blender. Entstanden sind vollstaendige Druckvorlagen und ein Regelwerk mit Core-Loop, Aktionen und Kampfsystem.",
     categories: ["Game", "Print", "3D"],
     tools: ["Adobe Illustrator", "Blender"],
-    contributors: [],
+    contributors: ["Nikolas Koch", "Moritz Eismann", "Marvin Nischik"],
     images: [
       "/sandsofdeception/umverpackung.png",
       "/sandsofdeception/spielbrett.png",
@@ -194,33 +211,16 @@ const projects = [
     videos: [],
   },
   {
-    id: "rendering3d",
-    title: "3D Rendering – Motion Tracking",
-    year: "2025",
-    season: "Winter",
-    semester: "4",
-    course: "3D Rendering",
-    description: "Integration eines 3D-gerendereten Objekts in reales Videomaterial mittels Motion Tracking. Das Projekt umfasst Camera Tracking zur Rekonstruktion der Kamerabewegung, HDRI-Beleuchtung fuer realistische Licht- und Schattenanpassung, Shader-Entwicklung sowie das abschliessende Compositing. Das gerenderte Objekt wurde nahtlos in eine reale Szene mit Schachbrett eingebettet.",
-    categories: ["3D", "Video"],
-    tools: ["Blender"],
-    contributors: [],
-    images: [
-      "/rendering3d/render.png",
-      "/rendering3d/tracking.png",
-    ],
-    videos: ["/rendering3d/render.mp4", "/rendering3d/tracking.mp4"],
-  },
-  {
     id: "einkaufsliste",
-    title: "WG-Einkaufsliste – App-Prototyp",
+    title: "WG-Einkaufsliste: App-Prototyp",
     year: "2023",
-    season: "Sommer",
+    season: "Winter",
     semester: "1",
     course: "Interface und Interaktionsdesign",
-    description: "Entwicklung und Prototyping einer mobilen Einkaufslisten-App fur WGs. Die App ermoglicht gemeinsames Einkaufen in Gruppen mit geteilten Listen, Budgetverwaltung und Kassenbon-Upload. Der Prozess umfasste Konzeption, Lo-Fi-Wireframes mit Interaktionsflows sowie einen vollstandigen Hi-Fi-Prototyp inkl. Usability-Tests. Features: kategorisierte Einkaufslisten, Sortierfunktion, Finanzen-Ubersicht mit Schuldenausgleich und Pinnwand.",
+    description: "Entwicklung und Prototyping einer mobilen Einkaufslisten-App fuer WGs. Die App ermoeglicht gemeinsames Einkaufen in Gruppen mit geteilten Listen, Budgetverwaltung und Kassenbon-Upload. Der Prozess umfasste Konzeption, Lo-Fi-Wireframes mit Interaktionsflows sowie einen vollstaendigen Hi-Fi-Prototyp inkl. Usability-Tests. Features: kategorisierte Einkaufslisten, Sortierfunktion, Finanzen-Uebersicht mit Schuldenausgleich, Pinnwand und Chatfunktion.",
     categories: ["App", "UX", "Prototyp"],
     tools: ["Figma", "Adobe Illustrator"],
-    contributors: [],
+    contributors: ["John Owusu-Ankomah", "Moritz Eismann", "Marvin Nischik"],
     images: [
       "/einkaufsliste/hifi-1.png",
       "/einkaufsliste/hifi-2.png",
@@ -234,39 +234,22 @@ const projects = [
   },
   {
     id: "rundgang2024",
-    title: "Rundgang 2024 – Corporate Design",
+    title: "Rundgang 2024: Corporate Design",
     year: "2023",
-    season: "Sommer",
+    season: "Winter",
     semester: "1",
     course: "Grundlagen Gestaltung",
-    description: "Entwicklung eines vollstandigen Corporate Designs fur den Rundgang 2024 der Hochschule Flensburg unter dem Motto 'Innovation und Erneuerung'. Entstanden sind ein A2-Plakat, ein Dreifach-Flyer sowie eine Einladungskarte - alle aufeinander abgestimmt in Gestaltung, Typografie und Farbsprache. Das visuelle Konzept verbindet ein lebendiges Weltraum-Thema mit klarer Informationsarchitektur: Astronaut, Planeten und Sternbilder als Metaphern fur Aufbruch und Entdeckung. Umgesetzt in Adobe InDesign, Illustrator und Photoshop.",
+    description: "Entwicklung eines vollstaendigen Corporate Designs fuer den Rundgang 2024 der Hochschule Flensburg unter dem Motto 'Innovation und Erneuerung'. Entstanden sind ein A2-Plakat, ein Dreifach-Flyer sowie eine Einladungskarte, alle aufeinander abgestimmt in Gestaltung, Typografie und Farbsprache. Das visuelle Konzept verbindet ein lebendiges Weltraum-Thema mit klarer Informationsarchitektur: Astronaut, Planeten und Sternbilder als Metaphern fuer Aufbruch und Entdeckung.",
     categories: ["Print", "Gestaltung"],
     tools: ["Adobe InDesign", "Adobe Illustrator", "Adobe Photoshop"],
-    contributors: [],
+    contributors: ["Maxim Ekkert", "Nikolas Koch", "Niklas Lohbusch"],
     images: [
+      "/rundgang2024/ausstellung.png",
       "/rundgang2024/poster.png",
       "/rundgang2024/flyer-aussen.png",
       "/rundgang2024/flyer-innen.png",
       "/rundgang2024/einladung-aussen.png",
       "/rundgang2024/einladung-innen.png",
-      "/rundgang2024/ausstellung.png",
-    ],
-    videos: [],
-  },
-  {
-    id: "groessenverhaeltnis",
-    title: "Grossenverhaeltnis – Fotomontage",
-    year: "2024",
-    season: "Winter",
-    semester: "2",
-    course: "Digitale Bildbearbeitung",
-    description: "Fotomontage aus mindestens drei Elementen mit stark verfremdeten Grossenverhaltnissen. Aufgenommen an einem Flensburger Gebäude - kombiniert mit einer Person, die durch bewusste Maßstabsverschiebung zur winzigen Figur im Motiv wird. Gleiche Perspektive und Objektivart als Grundlage; Farb- und Tonwertanpassung fur eine nahtlose Integration aller Elemente. Entstanden in Adobe Photoshop.",
-    categories: ["Foto", "Gestaltung"],
-    tools: ["Adobe Photoshop"],
-    contributors: [],
-    images: [
-      "/groessenverhaeltnis/vorher.png",
-      "/groessenverhaeltnis/nachher.png",
     ],
     videos: [],
   },
@@ -280,7 +263,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Justin Carstensen — Portfolio</title>
+  <title>Justin Carstensen: Portfolio</title>
   <meta name="description" content="UI Designer & Medieninformatik-Student an der Hochschule Flensburg." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -294,7 +277,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
   <!-- Topbar -->
   <header class="topbar" role="banner">
     <div class="topbar-inner">
-      <a href="#" class="logo" aria-label="Justin Carstensen – Portfolio Startseite">Justin Carstensen</a>
+      <a href="#" class="logo" aria-label="Justin Carstensen Portfolio Startseite">Justin Carstensen</a>
       <nav class="nav-right" aria-label="Hauptnavigation">
         <a href="#projekte" class="nav-link" data-i18n="nav-projects">Projekte</a>
         <button class="nav-cta" id="contact-btn" aria-haspopup="dialog" data-i18n="nav-contact">Kontakt</button>
@@ -326,13 +309,13 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
       <h2 class="contact-modal-title" id="contact-modal-title" data-i18n="contact-title">Kontakt</h2>
       <p class="contact-modal-sub" data-i18n="contact-sub">Schreib mir gerne eine Mail. Ich freue mich auf deine Nachricht.</p>
       <div class="contact-email-row">
-        <span class="contact-email-addr" id="contact-email-addr" aria-label="E-Mail-Adresse">hello@justin-carstensen.de</span>
+        <span class="contact-email-addr" id="contact-email-addr" aria-label="E-Mail-Adresse">justin.carstensen@outlook.de</span>
         <button class="contact-copy-btn" id="contact-copy-btn" aria-live="polite" data-i18n="contact-copy">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           Kopieren
         </button>
       </div>
-      <a class="contact-open-btn" id="contact-mail-link" href="mailto:hello@justin-carstensen.de" data-i18n="contact-open">
+      <a class="contact-open-btn" id="contact-mail-link" href="mailto:justin.carstensen@outlook.de" data-i18n="contact-open">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Mail-Client öffnen
       </a>
@@ -343,14 +326,13 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
   <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-eyebrow" aria-hidden="true">
       <span class="hero-eyebrow-dot"></span>
-      <span data-i18n="hero-eyebrow">B.Sc. Medieninformatik · Hochschule Flensburg</span>
+      <span data-i18n="hero-eyebrow">6. Semester BA Medieninformatik · Hochschule Flensburg</span>
     </div>
     <div class="hero-grid">
       <div class="hero-left">
         <h1 class="hero-name" id="hero-heading">Justin<br /><em>Carstensen</em></h1>
         <p class="hero-sub" data-i18n="hero-sub">
-          UI Designer mit Fokus auf Nutzererfahrung, visuelle Klarheit und interaktive Systeme.
-          Ich gestalte von der ersten Skizze bis zum fertigen Interface — mit einem Sinn für Details, die zählen.
+          Medieninformatik-Student im 6. Semester an der HS Flensburg, mit zwei Jahren Erfahrung als SHK im Usability Lab. Mein Schwerpunkt liegt auf UI/UX Design, als auch Websites und Games.
         </p>
       </div>
       <div class="hero-meta">
@@ -360,7 +342,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         </div>
         <div class="hero-meta-item">
           <strong data-i18n="hero-meta-focus">Fokus</strong>
-          <span data-i18n="hero-meta-focus-val">UI / UX Design</span>
+          <span data-i18n="hero-meta-focus-val">UI/UX und Websites</span>
         </div>
         <button class="hero-contact-btn" id="hero-contact-btn" aria-haspopup="dialog">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -380,8 +362,8 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
           class="search-input"
           id="search-input"
           type="search"
-          placeholder="Titel suchen…"
-          aria-label="Nach Projekttitel suchen"
+          placeholder="Titel oder Kurs suchen…"
+          aria-label="Nach Projekttitel oder Kurs suchen"
           autocomplete="off"
           data-i18n-placeholder="search-placeholder"
         />
@@ -426,7 +408,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <span class="footer-name">Justin Carstensen</span>
-      <span class="footer-right" data-i18n="footer-right">B.Sc. Medieninformatik · Hochschule Flensburg</span>
+      <span class="footer-right" data-i18n="footer-right">6. Semester BA Medieninformatik · Hochschule Flensburg</span>
     </div>
   </footer>
 
@@ -649,12 +631,12 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         skip: "Zum Hauptinhalt springen",
         "nav-projects": "Projekte",
         "nav-contact": "Kontakt",
-        "hero-eyebrow": "B.Sc. Medieninformatik · Hochschule Flensburg",
-        "hero-sub": "UI Designer mit Fokus auf Nutzererfahrung, visuelle Klarheit und interaktive Systeme. Ich gestalte von der ersten Skizze bis zum fertigen Interface — mit einem Sinn für Details, die zählen.",
+        "hero-eyebrow": "6. Semester BA Medieninformatik · Hochschule Flensburg",
+        "hero-sub": "Medieninformatik-Student im 6. Semester an der HS Flensburg, mit zwei Jahren Erfahrung als SHK im Usability Lab. Mein Schwerpunkt liegt auf UI/UX Design, als auch Websites und Games.",
         "hero-meta-study": "Studium",
         "hero-meta-university": "Hochschule Flensburg",
         "hero-meta-focus": "Fokus",
-        "hero-meta-focus-val": "UI / UX Design",
+        "hero-meta-focus-val": "UI/UX und Websites",
         "hero-contact-btn": "E-Mail schreiben",
         "contact-title": "Kontakt",
         "contact-sub": "Schreib mir gerne eine Mail. Ich freue mich auf deine Nachricht.",
@@ -663,7 +645,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         "contact-open": "Mail-Client öffnen",
         "filter-cat": "Kategorie",
         "filter-stack": "Stack",
-        "search-placeholder": "Titel suchen…",
+        "search-placeholder": "Titel oder Kurs suchen…",
         "sort-sem-desc": "Semester ↓",
         "sort-sem-asc": "Semester ↑",
         "sort-year-desc": "Jahr ↓",
@@ -671,7 +653,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         "empty-title": "Keine Projekte gefunden",
         "empty-sub": "Filter oder Suche anpassen, um Ergebnisse zu sehen.",
         "reset-btn": "Filter zurücksetzen",
-        "footer-right": "B.Sc. Medieninformatik · Hochschule Flensburg",
+        "footer-right": "6. Semester BA Medieninformatik · Hochschule Flensburg",
         "theme-toggle-to-dark": "Zu Dunkel-Modus wechseln",
         "theme-toggle-to-light": "Zu Hell-Modus wechseln",
         "close-contact": "Schließen",
@@ -683,12 +665,12 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         skip: "Skip to main content",
         "nav-projects": "Projects",
         "nav-contact": "Contact",
-        "hero-eyebrow": "B.Sc. Media Informatics · Flensburg University",
-        "hero-sub": "UI Designer focused on user experience, visual clarity, and interactive systems. I design from the first sketch to the finished interface — with an eye for details that matter.",
+        "hero-eyebrow": "6th Semester BA Media Informatics · Flensburg University of Applied Sciences",
+        "hero-sub": "Media Informatics student in my 6th semester at Flensburg University of Applied Sciences, with two years of experience as a student assistant in the Usability Lab. My focus is on UI/UX design, as well as websites and games.",
         "hero-meta-study": "Studies",
-        "hero-meta-university": "Flensburg University",
+        "hero-meta-university": "Flensburg University of Applied Sciences",
         "hero-meta-focus": "Focus",
-        "hero-meta-focus-val": "UI / UX Design",
+        "hero-meta-focus-val": "UI/UX and Websites",
         "hero-contact-btn": "Send an email",
         "contact-title": "Contact",
         "contact-sub": "Feel free to send me an email. I look forward to hearing from you.",
@@ -697,7 +679,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         "contact-open": "Open mail client",
         "filter-cat": "Category",
         "filter-stack": "Stack",
-        "search-placeholder": "Search by title…",
+        "search-placeholder": "Search by title or course…",
         "sort-sem-desc": "Semester ↓",
         "sort-sem-asc": "Semester ↑",
         "sort-year-desc": "Year ↓",
@@ -705,7 +687,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         "empty-title": "No projects found",
         "empty-sub": "Adjust filters or search to see results.",
         "reset-btn": "Reset filters",
-        "footer-right": "B.Sc. Media Informatics · Flensburg University",
+        "footer-right": "6th Semester BA Media Informatics · Flensburg University of Applied Sciences",
         "theme-toggle-to-dark": "Switch to dark mode",
         "theme-toggle-to-light": "Switch to light mode",
         "close-contact": "Close",
@@ -783,7 +765,7 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
     const modalClose = document.getElementById('contact-modal-close')!;
     const modalBg = document.getElementById('contact-modal-bg')!;
     const copyBtn = document.getElementById('contact-copy-btn')!;
-    const EMAIL = 'hello@justin-carstensen.de';
+    const EMAIL = 'justin.carstensen@outlook.de';
 
     let lastFocused: HTMLElement | null = null;
 
@@ -940,10 +922,11 @@ const allTools = [...new Set(projects.flatMap(p => p.tools))].sort();
         const cats: string[] = JSON.parse(el.dataset.categories || '[]');
         const tools: string[] = JSON.parse(el.dataset.tools || '[]');
         const title = (titleEl?.textContent || '').toLowerCase();
+        const course = (el.dataset.course || '').toLowerCase();
 
         const catOk = activeCats.size === 0 || [...activeCats].some(c => cats.includes(c));
         const toolOk = activeTools.size === 0 || [...activeTools].some(t => tools.includes(t));
-        const searchOk = !query || title.includes(query);
+        const searchOk = !query || title.includes(query) || course.includes(query);
 
         item.classList.toggle('hidden', !(catOk && toolOk && searchOk));
       });
